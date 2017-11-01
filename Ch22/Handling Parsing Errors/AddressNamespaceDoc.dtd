@@ -1,0 +1,8 @@
+   <!ELEMENT addresses:address (addresses:buildingnumber, addresses:street,
+                                  addresses:city, addresses:state, addresses:zip)>
+   <!ATTLIST addresses:address xmlns:addresses CDATA #IMPLIED>
+   <!ELEMENT addresses:buildingnumber (#PCDATA)>
+   <!ELEMENT addresses:street (#PCDATA)>
+   <!ELEMENT addresses:city (#PCDATA)>
+   <!ELEMENT addresses:state (#PCDATA)>
+   <!ELEMENT addresses:zip (#PCDATA)>

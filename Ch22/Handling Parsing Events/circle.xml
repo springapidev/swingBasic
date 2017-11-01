@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<circle radius="20" angle="0">
+  <color R="255" G="0" B="0"/>
+  <position x="10" y="15"/>
+</circle>

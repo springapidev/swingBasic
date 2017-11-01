@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE address 
+[
+   <!ELEMENT address (buildingnumber, street, city, state, zip)>
+   <!ATTLIST address xmlns CDATA #IMPLIED>
+   <!ELEMENT buildingnumber (#PCDATA)>
+   <!ELEMENT street (#PCDATA)>
+   <!ELEMENT city (#PCDATA)>
+   <!ELEMENT state (#PCDATA)>
+   <!ELEMENT zip (#PCDATA)>
+]>
+
+<address>
+  <buildingnumber> 29 </buildingnumber>
+  <street> South Lasalle Street</street>
+  <city>Chicago</city>
+  <state>Illinois</state>
+  <zip>60603</zip>
+</address>

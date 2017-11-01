@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sketch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="file:/C:/Beg%20Java%20Stuff/Sketcher.xsd">
+    <circle radius="15" angle="0">
+        <color R="255" G="0" B="0"/>
+        <position x="10" y="10"/>
+    </circle>
+    <line angle="0">
+        <color R="0" G="0" B="255"/>
+        <position x="10" y="10"/>
+        <endpoint x="30" y="40"/>
+    </line>
+    <rectangle angle="0">
+        <color R="255" G="0" B="0"/>
+        <position x="30" y="40"/>
+        <bottomright x="50" y="70"/>
+    </rectangle>
+</sketch>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE circle 
+[
+   <!ELEMENT circle (position)>
+   <!ATTLIST circle 
+             radius CDATA #REQUIRED
+   >
+
+   <!ELEMENT position EMPTY>
+   <!ATTLIST position 
+             x CDATA #REQUIRED
+             y CDATA #REQUIRED
+   >
+]>
+
+<circle radius="15">
+  <position x="30" y="50"/>
+</circle>

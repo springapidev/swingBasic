@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="sketch" type="SketchType"/>
+
+    <!--Type for a sketch root element -->
+    <xsd:complexType name="SketchType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="line" type="LineType"/>
+            <xsd:element name="rectangle" type="RectangleType"/>
+            <xsd:element name="circle" type="CircleType"/>
+            <xsd:element name="curve" type="CurveType"/>
+            <xsd:element name="text" type="TextType"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <!--Type for a line element -->
+    <xsd:complexType name="LineType">
+        <xsd:sequence>
+            <xsd:element name="color" type="ColorType"/>
+            <xsd:element name="position" type="PointType"/>
+            <xsd:element name="endpoint" type="PointType"/>
+        </xsd:sequence>
+        <xsd:attribute name="angle" type="xsd:double" use="required"/>
+    </xsd:complexType>
+
+    <!--Type for a rectangle element -->
+    <xsd:complexType name="RectangleType">
+        <xsd:sequence>
+            <xsd:element name="color" type="ColorType"/>
+            <xsd:element name="position" type="PointType"/>
+            <xsd:element name="bottomright" type="PointType"/>
+        </xsd:sequence>
+        <xsd:attribute name="angle" type="xsd:double" use="required"/>
+    </xsd:complexType>
+
+    <!--Type for a circle element -->
+    <xsd:complexType name="CircleType">
+        <xsd:sequence>
+            <xsd:element name="color" type="ColorType"/>
+            <xsd:element name="position" type="PointType"/>
+        </xsd:sequence>
+        <xsd:attribute name="radius" type="xsd:double" use="required"/>
+        <xsd:attribute name="angle" type="xsd:double" use="required"/>
+    </xsd:complexType>
+
+    <!--Type for a curve element -->
+    <xsd:complexType name="CurveType">
+        <xsd:sequence>
+            <xsd:element name="color" type="ColorType"/>
+            <xsd:element name="position" type="PointType"/>
+            <xsd:element name="point" type="PointType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="angle" type="xsd:double" use="required"/>
+    </xsd:complexType>
+
+    <!--Type for a text element -->
+    <xsd:complexType name="TextType">
+        <xsd:sequence>
+            <xsd:element name="color" type="ColorType"/>
+            <xsd:element name="position" type="PointType"/>
+            <xsd:element name="font" type="FontType"/>
+            <xsd:element name="string" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="angle" type="xsd:double" use="required"/>
+    </xsd:complexType>
+
+    <!--Type for a font element -->
+    <xsd:complexType name="FontType">
+        <xsd:attribute name="fontname" type="xsd:string" use="required"/>
+        <xsd:attribute name="fontstyle" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="plain"/>
+                    <xsd:enumeration value="bold"/>
+                    <xsd:enumeration value="italic"/>
+                    <xsd:enumeration value="bold-italic"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <!--Type for elements representing points -->
+    <xsd:complexType name="PointType">
+        <xsd:attributeGroup ref="coords"/>
+    </xsd:complexType>
+
+    <!--Type for a color element -->
+    <xsd:complexType name="ColorType">
+        <xsd:attribute name="R" type="xsd:nonNegativeInteger" use="required"/>
+        <xsd:attribute name="G" type="xsd:nonNegativeInteger" use="required"/>
+        <xsd:attribute name="B" type="xsd:nonNegativeInteger" use="required"/>
+    </xsd:complexType>
+
+    <!-- Attribute group specifying point coordinates -->
+    <xsd:attributeGroup name="coords">
+        <xsd:attribute name="x" type="xsd:double" use="required"/>
+        <xsd:attribute name="y" type="xsd:double" use="required"/>
+    </xsd:attributeGroup>
+</xsd:schema>

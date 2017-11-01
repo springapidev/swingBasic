@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE addresses:address SYSTEM "AddressNamespaceDoc.dtd">
+<addresses:address  xmlns:addresses=" http://www.wrox.com/AddressNamespace">
+  <addresses:buildingnumber> 29 </addresses:buildingnumber>
+  <addresses:street> South Lasalle Street</addresses:street>
+  <addresses:city>Chicago</addresses:city>
+  <addresses:state>Illinois</addresses:state>
+  <addresses:zip>60603</addresses:zip>
+</addresses:address>

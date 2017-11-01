@@ -1,0 +1,8 @@
+   <!ELEMENT address (buildingnumber, street, city, state, zip)>
+   <!ATTLIST address xmlns CDATA #IMPLIED>
+   <!ELEMENT buildingnumber (#PCDATA)>
+   <!ELEMENT street (#PCDATA)>
+   <!ELEMENT city (#PCDATA)>
+   <!ELEMENT state (#PCDATA)>
+   <!ELEMENT zip (#PCDATA)>
+

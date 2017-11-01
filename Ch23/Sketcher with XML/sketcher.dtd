@@ -1,0 +1,59 @@
+<!ELEMENT sketch (line|circle|rectangle|curve|text)*>
+
+<!ELEMENT color EMPTY>
+   <!ATTLIST color 
+             R CDATA                   #REQUIRED
+             G CDATA                   #REQUIRED
+             B CDATA                   #REQUIRED
+   >
+
+<!ENTITY % coordinates "x CDATA #REQUIRED y CDATA #REQUIRED">
+
+<!ELEMENT position EMPTY>
+   <!ATTLIST position %coordinates;> 
+
+<!ELEMENT endpoint EMPTY>
+   <!ATTLIST endpoint %coordinates;>
+
+<!ELEMENT line (color, position, endpoint)>
+   <!ATTLIST line 
+             angle CDATA                   #REQUIRED
+   >
+
+<!ELEMENT rectangle (color, position, bottomright)>
+   <!ATTLIST rectangle
+             angle CDATA                   #REQUIRED
+   >
+
+<!ELEMENT bottomright EMPTY>
+   <!ATTLIST bottomright %coordinates;>
+
+<!ELEMENT circle (color, position)>
+   <!ATTLIST circle
+             radius CDATA                  #REQUIRED
+             angle CDATA                   #REQUIRED
+   >
+
+<!ELEMENT curve (color, position, point+)>
+   <!ATTLIST curve  angle CDATA  #REQUIRED>
+
+<!ELEMENT point EMPTY>
+   <!ATTLIST point %coordinates;>
+
+<!ELEMENT text (color, position, font, string)>
+   <!ATTLIST text  angle CDATA  #REQUIRED>
+
+<!ELEMENT font EMPTY>
+   <!ATTLIST font
+             fontname  CDATA                           #REQUIRED
+             fontstyle (plain|bold|italic|bold-italic) #REQUIRED
+             pointsize CDATA                           #REQUIRED
+   >
+
+<!ELEMENT string (#PCDATA|bounds)*>
+
+<!ELEMENT bounds EMPTY>
+   <!ATTLIST bounds 
+             width     CDATA               #REQUIRED
+             height    CDATA               #REQUIRED 
+   >
