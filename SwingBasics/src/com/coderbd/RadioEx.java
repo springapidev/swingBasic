@@ -28,6 +28,7 @@ public class RadioEx extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         btnRead = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -57,6 +58,7 @@ public class RadioEx extends javax.swing.JFrame {
         jLabel3.setText("Result");
 
         buttonGroup1.add(rMale);
+        rMale.setSelected(true);
         rMale.setText("male");
 
         buttonGroup1.add(rFemale);
@@ -167,6 +169,7 @@ public class RadioEx extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnRead;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblData;

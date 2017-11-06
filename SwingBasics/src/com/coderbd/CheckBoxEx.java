@@ -57,6 +57,7 @@ public class CheckBoxEx extends javax.swing.JFrame {
 
         jLabel3.setText("Result");
 
+        chkRead.setSelected(true);
         chkRead.setText("Read");
 
         chkCode.setText("Code");

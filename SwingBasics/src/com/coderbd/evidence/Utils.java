@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.coderbd.evidence;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,7 +17,7 @@ import javax.swing.table.TableModel;
  */
 public class Utils {
 
-
+/*
 
     public static void main(String[] args) throws Exception {
         List<Student> list = new ArrayList<>();
@@ -33,7 +26,7 @@ public class Utils {
 
         writeTofile("student_infox", list);
     }
-
+*/
     public static void writeTofile(String filename, List<Student> students) throws Exception {
         File destFile = new File(filename + ".txt");
         try {

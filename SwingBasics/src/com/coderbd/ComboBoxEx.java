@@ -129,7 +129,7 @@ public class ComboBoxEx extends javax.swing.JFrame {
 
         String division = cmbDivision.getItemAt(cmbDivision.getSelectedIndex());
         if (division.equals("Select A Division")) {
-            lblData.setText("Select A Division");
+            lblData.setText("Select Another");
         } else {
             lblData.setText(division);
         }

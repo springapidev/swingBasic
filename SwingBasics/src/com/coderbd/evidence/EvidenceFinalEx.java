@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -26,6 +27,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
      */
     public EvidenceFinalEx() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -55,7 +57,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
         chkWriting = new javax.swing.JCheckBox();
         chkCoding = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
-        cmbRound = new javax.swing.JComboBox<>();
+        cmbRound = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tNote = new javax.swing.JTextArea();
@@ -136,7 +138,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Round");
 
-        cmbRound.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select A Round", "Round-32", "Round-33", "Round-34", "Round-35" }));
+        cmbRound.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Round", "Round-32", "Round-33", "Round-34", "Round-35" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Note");
@@ -369,27 +371,30 @@ public boolean checkEmailValidity(String email) {
         return false;
     }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String name = "", email = "", age = "0", gender = "", hobby = "", round = "", note = "";
+       //Variable dec. and initialize are for 7 fields
+        String name = "", email = "", age = "0", gender = "", 
+                hobby = "", round = "", note = "";
         //Validation is for Name field
         if (txtName.getText().length() < 1) {
             JOptionPane.showMessageDialog(null, "Enter your Name");
-        } //Validation is for Name field
+        } //Validation is for Email field
         else if (!checkEmailvalidity(txtEmail.getText()) || txtEmail.getText().length() < 1) {
             JOptionPane.showMessageDialog(null, "Enter your Valid Email");
-        } //Validation is for Name field
+        } //Validation is for Age field
         else if (Integer.parseInt(txtAge.getText()) < 18 || Integer.parseInt(txtAge.getText()) > 70) {
             JOptionPane.showMessageDialog(null, "Enter your Age between 18 to 70");
-        } //Validation is for Name field
+        } //Validation is for Gender field
         else if (buttonGroup1.getSelection().isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Select A Gender");
-        } //Validation is for Name field
+        } //Validation is for Hobby field
         else if (!chkReading.isSelected() && !chkWriting.isSelected() && !chkCoding.isSelected()) {
             JOptionPane.showMessageDialog(null, "Select Hobby");
-        } //Validation is for Name field
+        } //Validation is for Round field
         else if (cmbRound.getItemAt(cmbRound.getSelectedIndex()) == "Select A Round") {
             JOptionPane.showMessageDialog(null, "Enter your Round");
-        } else if (tNote.getText().length() < 5) {
-            JOptionPane.showMessageDialog(null, "Enter your Note");
+        }// //Validation is for Round field
+        else if (tNote.getText().length() < 5) {
+            JOptionPane.showMessageDialog(null, "Enter your Note, At least 5 Charcters");
         } else {
             name = txtName.getText();
             email = txtEmail.getText();
@@ -415,7 +420,8 @@ public boolean checkEmailValidity(String email) {
             round = cmbRound.getItemAt(cmbRound.getSelectedIndex());
             note = tNote.getText();
 
-            Student student = new Student(name, email, Integer.parseInt(age), gender, hobby, round, note);
+            Student student = new Student(name, email, Integer.parseInt(age), 
+                    gender, hobby, round, note);
             List<Student> students = new ArrayList<>();
             students.add(student);
 
