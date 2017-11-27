@@ -343,20 +343,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public boolean checkEmailValidity(String email) {
 
-        int atpos = email.indexOf("@");
-        int dotpos = email.lastIndexOf(".");
-
-        if (atpos > 1 && (dotpos - atpos) > 2) {
-            //  System.out.println("Email is valid");
-            return true;
-        } else {
-            // System.out.println("Email is invalid");
-            return false;
-        }
-
-    }
 
     public boolean checkEmailvalidity(String email) {
         if (null != email) {
@@ -372,7 +359,7 @@ public boolean checkEmailValidity(String email) {
     }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
        //Variable dec. and initialize are for 7 fields
-        String name = "", email = "", age = "0", gender = "", 
+        String n = "", email = "", age = "0", gender = "", 
                 hobby = "", round = "", note = "";
         //Validation is for Name field
         if (txtName.getText().length() < 1) {
@@ -396,7 +383,7 @@ public boolean checkEmailValidity(String email) {
         else if (tNote.getText().length() < 5) {
             JOptionPane.showMessageDialog(null, "Enter your Note, At least 5 Charcters");
         } else {
-            name = txtName.getText();
+            n = txtName.getText();
             email = txtEmail.getText();
             age = txtAge.getText();
 
@@ -419,12 +406,12 @@ public boolean checkEmailValidity(String email) {
 
             round = cmbRound.getItemAt(cmbRound.getSelectedIndex());
             note = tNote.getText();
-
-            Student student = new Student(name, email, Integer.parseInt(age), 
+           // Now Set above data into Student Object
+            Student student = new Student(n, email, Integer.parseInt(age), 
                     gender, hobby, round, note);
             List<Student> students = new ArrayList<>();
             students.add(student);
-
+//Since data is ready for display, so now we shall work with Table
             DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
             Object[] row = new Object[7];
 
