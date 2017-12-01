@@ -5,13 +5,6 @@
  */
 package com.coderbd;
 
-import com.sun.xml.internal.fastinfoset.tools.PrintTable;
-import java.awt.Graphics;
-import java.awt.print.PageFormat;
-import java.awt.print.Paper;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.io.PrintWriter;
 import java.text.MessageFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
