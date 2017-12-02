@@ -18,7 +18,7 @@ public class MySqlDbConnection {
 
     public static Connection getConnection() {
         try {
-            con = DriverManager.getConnection(URL, "root", "root");
+            con = DriverManager.getConnection(URL, "root", "1234");
             System.out.println("::Connected::");
         } catch (SQLException ex) {
             Logger.getLogger(MySqlDbConnection.class.getName()).log(Level.SEVERE, null, ex);

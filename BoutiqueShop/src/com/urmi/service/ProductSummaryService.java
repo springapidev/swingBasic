@@ -46,9 +46,9 @@ public class ProductSummaryService implements ProductSummaryDao {
     public void update(ProductSummary s) {
         try {
             if (s.getId() != 0) {
-                PreparedStatement stmt = conn.prepareStatement("update productsummary SET sold_qty=?, avilable_qty=? where id=?");
+                PreparedStatement stmt = conn.prepareStatement("update productsummary SET purchase_qty=?, avilable_qty=? where id=?");
 
-                stmt.setInt(1, s.getSoldQty());
+                stmt.setInt(1, s.getPurchaseQty());
                 stmt.setInt(2, s.getAvilableQty());
                 stmt.setInt(3, s.getId());
                 int i = stmt.executeUpdate();
