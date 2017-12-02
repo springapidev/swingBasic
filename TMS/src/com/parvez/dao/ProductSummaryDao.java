@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.firoza.dao;
+package com.parvez.dao;
 
-import com.firoza.domain.ProductSummary;
-import com.firoza.domain.User;
+import com.parvez.domain.ProductSummary;
+import com.parvez.domain.User;
 import java.util.List;
 
 /**
@@ -18,6 +13,8 @@ public interface ProductSummaryDao {
     void save(ProductSummary s);
 
     void update(ProductSummary s);
+
+    public void updateWhenSales(ProductSummary s);
 
     void delete(int id);
 

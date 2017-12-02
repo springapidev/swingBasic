@@ -1,4 +1,4 @@
-package com.firoza.domain;
+package com.parvez.domain;
 
 /**
  *
@@ -16,8 +16,8 @@ public class ProductSummary {
     public ProductSummary() {
     }
 
-    public ProductSummary(int soldQty, int avilableQty) {
-        this.soldQty = soldQty;
+    public ProductSummary(int purchaseQty, int avilableQty) {
+        this.purchaseQty = purchaseQty;
         this.avilableQty = avilableQty;
     }
 

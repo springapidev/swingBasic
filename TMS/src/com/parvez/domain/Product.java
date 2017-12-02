@@ -1,4 +1,4 @@
-package com.firoza.domain;
+package com.parvez.domain;
 
 /**
  *

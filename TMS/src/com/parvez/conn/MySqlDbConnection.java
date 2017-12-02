@@ -1,4 +1,4 @@
-package com.firoza.conn;
+package com.parvez.conn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class MySqlDbConnection {
     private static final String HOST = "jdbc:mysql://localhost:3306";
-    private static final String DBNMAE = "tusionms?useServerPrepStmts=true";
+    private static final String DBNMAE = "tms?useServerPrepStmts=true";
     private static final String URL = HOST + "/" + DBNMAE;
     private static Connection con = null;
 

@@ -1,10 +1,9 @@
-package com.firoza.service;
+package com.parvez.service;
 
-
-import com.firoza.conn.MySqlDbConnection;
-import com.firoza.dao.ProductSummaryDao;
-import com.firoza.domain.ProductSummary;
-import com.firoza.domain.User;
+import com.parvez.conn.MySqlDbConnection;
+import com.parvez.dao.ProductSummaryDao;
+import com.parvez.domain.ProductSummary;
+import com.parvez.domain.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,12 +37,31 @@ public class ProductSummaryService implements ProductSummaryDao {
             }
             // con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void update(ProductSummary s) {
+        try {
+            if (s.getId() != 0) {
+                PreparedStatement stmt = conn.prepareStatement("update productsummary SET purchase_qty=?, avilable_qty=? where id=?");
+
+                stmt.setInt(1, s.getPurchaseQty());
+                stmt.setInt(2, s.getAvilableQty());
+                stmt.setInt(3, s.getId());
+                int i = stmt.executeUpdate();
+
+                System.out.println(i + " record Updated");
+            }
+            // con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+     @Override
+    public void updateWhenSales(ProductSummary s) {
         try {
             if (s.getId() != 0) {
                 PreparedStatement stmt = conn.prepareStatement("update productsummary SET sold_qty=?, avilable_qty=? where id=?");
@@ -57,10 +75,11 @@ public class ProductSummaryService implements ProductSummaryDao {
             }
             // con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -84,7 +103,7 @@ public class ProductSummaryService implements ProductSummaryDao {
                 list.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

@@ -5,24 +5,23 @@
  */
 package com.firoza.dao;
 
-import com.firoza.domain.Product;
-import com.firoza.domain.User;
+import com.firoza.domain.Student;
 import java.util.List;
 
 /**
  *
  * @author J2EE-33
  */
-public interface ProductDao {
+public interface StudentDao {
 
-    void save(Product s);
+    void save(Student s);
 
-    void update(Product s);
+    void update(Student s);
 
     void delete(int id);
 
-    List<Product> getList();
+    List<Student> getList();
 
-    Product getProductByID(int id);
+    Student getStudentByID(int id);
 
 }
