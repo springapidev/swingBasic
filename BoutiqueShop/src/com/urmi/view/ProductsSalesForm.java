@@ -343,7 +343,9 @@ public class ProductsSalesForm extends javax.swing.JFrame {
                     int nowSoldQty = bs.getSoldQty() + Integer.parseInt(txtQty.getText());
                     int nowAvailableQty = bs.getAvilableQty() - Integer.parseInt(txtQty.getText());
 
-                    ProductSummary bsx = new ProductSummary(nowSoldQty, nowAvailableQty);
+                    ProductSummary bsx = new ProductSummary();
+                    bsx.setSoldQty(nowSoldQty);
+                    bsx.setAvilableQty(nowAvailableQty);
                     bsx.setId(bs.getId());
 
                     pss.updateWhenSales(bsx);
