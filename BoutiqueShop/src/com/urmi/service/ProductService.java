@@ -29,14 +29,14 @@ public class ProductService implements ProductDao {
     public void save(Product s) {
         try {
             if (s.getName() != null) {
-                PreparedStatement stmt = conn.prepareStatement("insert into product(name,product_code,unitPrice, qty,totalPrice,purchase_date) values(?,?,?,?,?,?)");
-
+                PreparedStatement stmt = conn.prepareStatement("insert into product(name,product_code,unitPrice, qty,totalPrice,category, purchase_date) values(?,?,?,?,?,?,?)");
                 stmt.setString(1, s.getName());
                 stmt.setString(2, s.getProductCode());
                 stmt.setDouble(3, s.getUnitPrice());
                 stmt.setInt(4, s.getQty());
                 stmt.setDouble(5, s.getTotalPrice());
-                stmt.setString(6, s.getPurchaseDate());
+                stmt.setString(6, s.getCategory());
+                stmt.setString(7, s.getPurchaseDate());
 
                 int i = stmt.executeUpdate();
                 System.out.println(i + " Product inserted");
@@ -51,15 +51,16 @@ public class ProductService implements ProductDao {
     public void update(Product s) {
         try {
             if (s.getId() != 0) {
-                PreparedStatement stmt = conn.prepareStatement("update product SET name=?,product_code=?,unitPrice=?,qty=?, totalPrice=?, purchase_date=?  where id=?");
+                PreparedStatement stmt = conn.prepareStatement("update product SET name=?,product_code=?,unitPrice=?,qty=?, totalPrice=?, category=?, purchase_date=?  where id=?");
 
                 stmt.setString(1, s.getName());
                 stmt.setString(2, s.getProductCode());
                 stmt.setDouble(3, s.getUnitPrice());
                 stmt.setInt(4, s.getQty());
                 stmt.setDouble(5, s.getTotalPrice());
-                stmt.setString(6, s.getPurchaseDate());
-                stmt.setInt(7, s.getId());
+                  stmt.setString(6, s.getCategory());
+                stmt.setString(7, s.getPurchaseDate());
+                stmt.setInt(8, s.getId());
                 int i = stmt.executeUpdate();
 
                 System.out.println(i + " record Updated");
@@ -102,7 +103,8 @@ public class ProductService implements ProductDao {
                 p.setUnitPrice(rs.getInt(4));
                 p.setQty(rs.getInt(5));
                 p.setTotalPrice(rs.getInt(6));
-                p.setPurchaseDate(rs.getString(7));
+                p.setCategory(rs.getString(7));
+                p.setPurchaseDate(rs.getString(8));
                 list.add(p);
             }
         } catch (SQLException ex) {
@@ -113,7 +115,7 @@ public class ProductService implements ProductDao {
 
     @Override
     public Product getProductByID(int id) {
-          Product p = new Product();
+        Product p = new Product();
         try {
 
             PreparedStatement stmt = conn.prepareStatement("select * from product where id=?");
@@ -127,7 +129,8 @@ public class ProductService implements ProductDao {
                 p.setUnitPrice(rs.getInt(4));
                 p.setQty(rs.getInt(5));
                 p.setTotalPrice(rs.getInt(6));
-                p.setPurchaseDate(rs.getString(7));
+                p.setCategory(rs.getString(7));
+                p.setPurchaseDate(rs.getString(8));
 
             }
 

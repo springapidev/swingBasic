@@ -5,6 +5,8 @@
  */
 package com.urmi.view;
 
+import com.urmi.common.CommonMenu;
+
 /**
  *
  * @author J2EE-33
@@ -16,6 +18,7 @@ public class DashBoard extends javax.swing.JFrame {
      */
     public DashBoard() {
         initComponents();
+          setJMenuBar(CommonMenu.displayMenu(this));
     }
 
     /**

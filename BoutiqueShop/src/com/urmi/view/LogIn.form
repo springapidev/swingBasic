@@ -61,14 +61,17 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btnLogIn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnClose" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtName" max="32767" attributes="0"/>
+                          <Component id="txtuserName" max="32767" attributes="0"/>
                           <Component id="txtPass" pref="172" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lblMsg" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnLogIn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnClose" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
@@ -81,7 +84,7 @@
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="txtName" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtuserName" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -93,12 +96,14 @@
                           <Component id="txtPass" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblMsg" min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnLogIn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace pref="77" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -122,7 +127,7 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtName">
+        <Component class="javax.swing.JTextField" name="txtuserName">
         </Component>
         <Component class="javax.swing.JTextField" name="txtPass">
         </Component>
@@ -133,6 +138,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Log In"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogInActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClose">
           <Properties>
@@ -141,6 +149,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Close&#xa;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMsg">
         </Component>
       </SubComponents>
     </Container>

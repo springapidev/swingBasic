@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.urmi.dao;
 
 import com.urmi.domain.ProductSummary;
@@ -18,6 +13,8 @@ public interface ProductSummaryDao {
     void save(ProductSummary s);
 
     void update(ProductSummary s);
+
+    public void updateWhenSales(ProductSummary s);
 
     void delete(int id);
 

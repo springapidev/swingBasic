@@ -2,7 +2,6 @@ package com.urmi.service;
 
 import com.urmi.conn.MySqlDbConnection;
 import com.urmi.dao.ProductSummaryDao;
-import com.urmi.domain.Product;
 import com.urmi.domain.ProductSummary;
 import com.urmi.domain.User;
 import java.sql.Connection;
@@ -38,7 +37,7 @@ public class ProductSummaryService implements ProductSummaryDao {
             }
             // con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -57,10 +56,30 @@ public class ProductSummaryService implements ProductSummaryDao {
             }
             // con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+     @Override
+    public void updateWhenSales(ProductSummary s) {
+        try {
+            if (s.getId() != 0) {
+                PreparedStatement stmt = conn.prepareStatement("update productsummary SET sold_qty=?, avilable_qty=? where id=?");
+
+                stmt.setInt(1, s.getSoldQty());
+                stmt.setInt(2, s.getAvilableQty());
+                stmt.setInt(3, s.getId());
+                int i = stmt.executeUpdate();
+
+                System.out.println(i + " record Updated");
+            }
+            // con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -84,7 +103,7 @@ public class ProductSummaryService implements ProductSummaryDao {
                 list.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSummaryService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
