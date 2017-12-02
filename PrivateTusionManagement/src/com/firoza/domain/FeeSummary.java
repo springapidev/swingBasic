@@ -16,8 +16,12 @@ public class FeeSummary {
     public FeeSummary() {
     }
 
-    public FeeSummary(int id, int studentID, String name, double totalPaybleFee, double paidFee, double dueFee) {
-        this.id = id;
+    public FeeSummary(double paidFee, double dueFee) {
+        this.paidFee = paidFee;
+        this.dueFee = dueFee;
+    }
+
+    public FeeSummary(int studentID, String name, double totalPaybleFee, double paidFee, double dueFee) {
         this.studentID = studentID;
         this.name = name;
         this.totalPaybleFee = totalPaybleFee;
