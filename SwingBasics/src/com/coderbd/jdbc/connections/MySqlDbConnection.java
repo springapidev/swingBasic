@@ -1,4 +1,4 @@
-package com.urmi.conn;
+package com.coderbd.jdbc.connections;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,17 +8,17 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sunzida nasrin
+ * @author Rajail Islam
  */
 public class MySqlDbConnection {
     private static final String HOST = "jdbc:mysql://localhost:3306";
-    private static final String DBNMAE = "boutique?useServerPrepStmts=true";
+    private static final String DBNMAE = "swing";
     private static final String URL = HOST + "/" + DBNMAE;
     private static Connection con = null;
 
     public static Connection getConnection() {
         try {
-            con = DriverManager.getConnection(URL, "root", "root");
+            con = DriverManager.getConnection(URL, "root", "1234");
             System.out.println("::Connected::");
         } catch (SQLException ex) {
             Logger.getLogger(MySqlDbConnection.class.getName()).log(Level.SEVERE, null, ex);

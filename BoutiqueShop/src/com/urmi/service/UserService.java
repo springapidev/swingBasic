@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sanjida Nasrin URMI
+ * @author Sanjida Nasrin 
  */
 public class UserService implements UserDao {
 

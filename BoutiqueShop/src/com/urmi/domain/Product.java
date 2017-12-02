@@ -2,7 +2,7 @@ package com.urmi.domain;
 
 /**
  *
- * @author Rajaul Islam
+ * @author Sunzida Nasrin
  */
 public class Product {
 

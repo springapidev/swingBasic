@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Rajaul Islam
+ * @author Sunzida nasrin
  */
 public interface UserDao {
 
