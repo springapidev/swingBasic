@@ -5,9 +5,11 @@
  */
 package com.firoza.view;
 
+import com.firoza.common.CommonMenu;
+
 /**
  *
- * @author J2EE-33
+ * @author Firoza Akter
  */
 public class DashBoard extends javax.swing.JFrame {
 
@@ -16,6 +18,7 @@ public class DashBoard extends javax.swing.JFrame {
      */
     public DashBoard() {
         initComponents();
+           setJMenuBar(CommonMenu.displayMenu(this));
     }
 
     /**

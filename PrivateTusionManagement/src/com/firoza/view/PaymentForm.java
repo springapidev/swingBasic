@@ -5,6 +5,7 @@
  */
 package com.firoza.view;
 
+import com.firoza.common.CommonMenu;
 import com.firoza.domain.BillGenerate;
 import com.firoza.domain.FeeSummary;
 import com.firoza.domain.Payment;
@@ -19,7 +20,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public class PaymentForm extends javax.swing.JFrame {
 
@@ -29,6 +30,7 @@ public class PaymentForm extends javax.swing.JFrame {
     public PaymentForm() {
         initComponents();
         displayDataWithinTable();
+           setJMenuBar(CommonMenu.displayMenu(this));
     }
 
     /**

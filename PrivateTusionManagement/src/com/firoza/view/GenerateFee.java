@@ -5,6 +5,7 @@
  */
 package com.firoza.view;
 
+import com.firoza.common.CommonMenu;
 import com.firoza.domain.BillGenerate;
 import com.firoza.domain.FeeSummary;
 import com.firoza.domain.Student;
@@ -17,7 +18,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public class GenerateFee extends javax.swing.JFrame {
 
@@ -27,6 +28,7 @@ public class GenerateFee extends javax.swing.JFrame {
     public GenerateFee() {
         initComponents();
         displayDataWithinTable();
+           setJMenuBar(CommonMenu.displayMenu(this));
     }
 
     /**

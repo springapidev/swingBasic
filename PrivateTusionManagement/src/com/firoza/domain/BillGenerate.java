@@ -7,7 +7,7 @@ package com.firoza.domain;
 
 /**
  *
- * @author Rajaul Islam
+ * @author Firoza Akter
  */
 public class BillGenerate {
 

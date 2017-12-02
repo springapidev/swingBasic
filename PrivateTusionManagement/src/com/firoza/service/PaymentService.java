@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public class PaymentService implements PaymentDao {
 

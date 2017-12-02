@@ -15,7 +15,7 @@ import com.firoza.dao.FeeSummaryDao;
 
 /**
  *
- * @author J2EE-33
+ * @author Firoza Akter
  */
 public class FeeSummaryService implements FeeSummaryDao {
 

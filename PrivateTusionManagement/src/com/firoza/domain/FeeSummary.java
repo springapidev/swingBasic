@@ -2,7 +2,7 @@ package com.firoza.domain;
 
 /**
  *
- * @author Sunzida Nasrin
+ * @author Firoza Akter
  */
 public class FeeSummary {
 

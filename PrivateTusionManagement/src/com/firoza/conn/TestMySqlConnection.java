@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author Sunzida nasrin
+ * @author Firoza Akter
  */
 public class TestMySqlConnection {
     public static void main(String[] args) {

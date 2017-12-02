@@ -3,7 +3,7 @@ package com.firoza.domain;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public class Payment {
 

@@ -2,7 +2,7 @@ package com.firoza.domain;
 
 /**
  *
- * @author Sunzida nasrin
+ * @author Firoza Akter
  */
 public class User {
 

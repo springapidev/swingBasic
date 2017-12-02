@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public interface PaymentDao {
       void save(Payment s);

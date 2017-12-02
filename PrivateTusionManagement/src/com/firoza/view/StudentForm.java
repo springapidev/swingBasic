@@ -5,6 +5,7 @@
  */
 package com.firoza.view;
 
+import com.firoza.common.CommonMenu;
 import com.firoza.domain.Student;
 import com.firoza.service.StudentService;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Rajail Islam
+ * @author Firoza Akter
  */
 public class StudentForm extends javax.swing.JFrame {
 
@@ -22,6 +23,7 @@ public class StudentForm extends javax.swing.JFrame {
     public StudentForm() {
         initComponents();
         displayDataWithinTable();
+           setJMenuBar(CommonMenu.displayMenu(this));
     }
 
     /**
@@ -206,8 +208,8 @@ public class StudentForm extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -230,7 +232,7 @@ public class StudentForm extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
