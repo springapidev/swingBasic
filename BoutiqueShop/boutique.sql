@@ -69,7 +69,7 @@ CREATE TABLE `productsummary` (
 
 LOCK TABLES `productsummary` WRITE;
 /*!40000 ALTER TABLE `productsummary` DISABLE KEYS */;
-INSERT INTO `productsummary` VALUES (1,'1000',220,0,217,'sari');
+INSERT INTO `productsummary` VALUES (1,'1000',220,11,209,'sari');
 /*!40000 ALTER TABLE `productsummary` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `sales_details` (
   `customer_name` varchar(45) DEFAULT NULL,
   `customer_mobile` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `sales_details` (
 
 LOCK TABLES `sales_details` WRITE;
 /*!40000 ALTER TABLE `sales_details` DISABLE KEYS */;
-INSERT INTO `sales_details` VALUES (1,'sari','1000',3,2500,'7500','','15-11-2017','A122','4546565');
+INSERT INTO `sales_details` VALUES (1,'sari','1000',3,2500,'7500','','15-11-2017','A122','4546565'),(2,'sari','1000',3,2600,'7800','','16-11-2017','gd','3434'),(3,'sari','1000',5,2100,'10500','','16-11-2017','gfgf','47563456');
 /*!40000 ALTER TABLE `sales_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-02 14:07:02
+-- Dump completed on 2017-12-02 14:48:59
