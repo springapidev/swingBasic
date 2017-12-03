@@ -15,7 +15,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author J2EE-33
+ * @author Parvez
  */
 public class ProductsSalesForm extends javax.swing.JFrame {
 

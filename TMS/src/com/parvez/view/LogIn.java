@@ -10,7 +10,7 @@ import com.parvez.service.UserService;
 
 /**
  *
- * @author J2EE-33
+ * @author Parvez
  */
 public class LogIn extends javax.swing.JFrame {
 
@@ -19,6 +19,7 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
+        
     }
 
     /**
@@ -61,6 +62,11 @@ public class LogIn extends javax.swing.JFrame {
 
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnClose.setText("Close\n");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,6 +145,10 @@ public class LogIn extends javax.swing.JFrame {
             lblMsg.setText("Insert username and password!");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+      System.exit(0);
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments

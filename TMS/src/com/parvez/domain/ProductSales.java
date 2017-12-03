@@ -2,7 +2,7 @@ package com.parvez.domain;
 
 /**
  *
- * @author Sunzida Nasrin
+ * @author Parvez
  */
 public class ProductSales {
 
