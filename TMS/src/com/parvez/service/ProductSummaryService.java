@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author J2EE-33
+ * @author Parvez
  */
 public class ProductSummaryService implements ProductSummaryDao {
 

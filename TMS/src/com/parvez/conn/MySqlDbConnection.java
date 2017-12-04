@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Sunzida nasrin
+ * @author Parvez
  */
 public class MySqlDbConnection {
     private static final String HOST = "jdbc:mysql://localhost:3306";

@@ -13,7 +13,7 @@ import javax.swing.JMenuItem;
 
 /**
  *
- * @author Rajaul Islam
+ * @author Parvez
  */
 public class CommonMenu {
 
@@ -33,7 +33,7 @@ public class CommonMenu {
             }
         });
 
-        JMenuItem item1 = new JMenuItem("Purchase Product");
+        JMenuItem item1 = new JMenuItem("Purchase Mobile");
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +42,7 @@ public class CommonMenu {
             }
         });
 
-        JMenuItem item2 = new JMenuItem("Sales Product");
+        JMenuItem item2 = new JMenuItem("Sales Mobile");
         item2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +51,7 @@ public class CommonMenu {
             }
         });
 
-        JMenuItem item3 = new JMenuItem("Exit");
+        JMenuItem item3 = new JMenuItem("Log out");
         item3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,14 +59,14 @@ public class CommonMenu {
                 new LogIn().setVisible(true);
             }
         });
-
+        menu1.add(itemMain);
+        menu1.addSeparator();
         menu1.add(item1);
         menu1.addSeparator();
         menu1.add(item2);
         menu1.addSeparator();
         menu1.add(item3);
-        menu1.addSeparator();
-        menu1.add(itemMain);
+
         JMenu menu2 = new JMenu("Help");
 
         menuBar.add(menu1);

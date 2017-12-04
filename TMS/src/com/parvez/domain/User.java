@@ -2,7 +2,7 @@ package com.parvez.domain;
 
 /**
  *
- * @author Sunzida nasrin
+ * @author Parvez
  */
 public class User {
 

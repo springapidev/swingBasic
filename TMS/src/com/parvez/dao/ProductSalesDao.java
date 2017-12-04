@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author J2EE-33
+ * @author Parvez
  */
 public interface ProductSalesDao {
 
