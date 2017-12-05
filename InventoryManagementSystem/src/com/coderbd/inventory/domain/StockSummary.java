@@ -1,7 +1,5 @@
 package com.coderbd.inventory.domain;
 
-import com.coderbd.mobile.domain.*;
-
 /**
  *
  * @author Rajaul Islam

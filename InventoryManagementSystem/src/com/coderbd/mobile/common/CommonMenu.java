@@ -1,5 +1,8 @@
 package com.coderbd.mobile.common;
 
+import com.coderbd.inventory.view.OrderItemsListForm;
+import com.coderbd.inventory.view.OrderItemsListStatusForm;
+import com.coderbd.inventory.view.StockSummaryForm;
 import com.coderbd.mobile.view.DashBoard;
 import com.coderbd.mobile.view.LogIn;
 import com.coderbd.mobile.view.Products;
@@ -51,6 +54,32 @@ public class CommonMenu {
             }
         });
 
+        JMenuItem item4 = new JMenuItem("Stock Summary");
+        item4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new StockSummaryForm().setVisible(true);
+            }
+        });
+        JMenuItem item5 = new JMenuItem("Eligible For Order");
+        item5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new OrderItemsListForm().setVisible(true);
+            }
+        });
+
+        JMenuItem item6 = new JMenuItem("Order Status");
+        item6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new OrderItemsListStatusForm().setVisible(true);
+            }
+        });
+
         JMenuItem item3 = new JMenuItem("Exit");
         item3.addActionListener(new ActionListener() {
             @Override
@@ -63,6 +92,13 @@ public class CommonMenu {
         menu1.add(item1);
         menu1.addSeparator();
         menu1.add(item2);
+        menu1.addSeparator();
+
+        menu1.add(item4);
+        menu1.addSeparator();
+        menu1.add(item5);
+        menu1.addSeparator();
+        menu1.add(item6);
         menu1.addSeparator();
         menu1.add(item3);
         menu1.addSeparator();

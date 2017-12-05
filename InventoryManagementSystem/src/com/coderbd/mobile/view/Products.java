@@ -281,7 +281,7 @@ public class Products extends javax.swing.JFrame {
         ps.save(product);
         lblMsg.setText("Success!!");
 
-        //for book summary
+        //for Inventory
         StockSummaryService pss = new StockSummaryService();
 
         List list = pss.getList();
@@ -347,6 +347,7 @@ public class Products extends javax.swing.JFrame {
         int i = tblDisplay.getSelectedRow();
         TableModel model = tblDisplay.getModel();
         txtName.setText(model.getValueAt(i, 1).toString());
+        txtProductCode.setText(model.getValueAt(i, 2).toString());
     }//GEN-LAST:event_tblDisplayMouseClicked
     public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();

@@ -4,6 +4,7 @@ import com.coderbd.inventory.domain.ItemsEligibleForOder;
 import com.coderbd.inventory.domain.StockSummary;
 import com.coderbd.inventory.service.ItemsEligibleForOderService;
 import com.coderbd.inventory.service.StockSummaryService;
+import com.coderbd.mobile.common.CommonMenu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class OrderItemsListForm extends javax.swing.JFrame {
      */
     public OrderItemsListForm() {
         initComponents();
+          setJMenuBar(CommonMenu.displayMenu(this));
         displayProductDataWithinTable();
     }
 
@@ -29,7 +31,7 @@ public final class OrderItemsListForm extends javax.swing.JFrame {
         List<ItemsEligibleForOder> eligibleOrderList = new ArrayList();
 
         StockSummaryService productService = new StockSummaryService();
-        List<StockSummary> pList = productService.getListForOrdersWhenStockLow(210);
+        List<StockSummary> pList = productService.getListForOrdersWhenStockLow(10);
         for (StockSummary s : pList) {
             ItemsEligibleForOder item = new ItemsEligibleForOder(s.getId(), s.getProductName(), s.getProductCode(), s.getPurchaseQty(), s.getSoldQty(), s.getAvilableQty(), 0, "pending");
             eligibleOrderList.add(item);

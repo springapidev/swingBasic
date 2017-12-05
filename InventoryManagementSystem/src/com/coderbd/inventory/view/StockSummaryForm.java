@@ -2,6 +2,7 @@ package com.coderbd.inventory.view;
 
 import com.coderbd.inventory.domain.StockSummary;
 import com.coderbd.inventory.service.StockSummaryService;
+import com.coderbd.mobile.common.CommonMenu;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +17,7 @@ public final class StockSummaryForm extends javax.swing.JFrame {
      */
     public StockSummaryForm() {
         initComponents();
+          setJMenuBar(CommonMenu.displayMenu(this));
         displayProductDataWithinTable();
     }
 

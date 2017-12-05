@@ -4,6 +4,7 @@ import com.coderbd.inventory.domain.ItemsEligibleForOder;
 import com.coderbd.inventory.domain.StockSummary;
 import com.coderbd.inventory.service.ItemsEligibleForOderService;
 import com.coderbd.inventory.service.StockSummaryService;
+import com.coderbd.mobile.common.CommonMenu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
      */
     public OrderItemsListStatusForm() {
         initComponents();
+          setJMenuBar(CommonMenu.displayMenu(this));
         // displayProductDataWithinTable();
         //displayOdersByStatusWithinTable("Pending");
     }
