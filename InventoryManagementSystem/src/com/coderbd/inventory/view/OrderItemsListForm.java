@@ -185,16 +185,16 @@ public final class OrderItemsListForm extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblDisplayStockSummary.getModel();
         Vector data = model.getDataVector();
         Set<ItemsEligibleForOder> colData;
-        ItemsEligibleForOder is =new ItemsEligibleForOder();
+      
         Vector row = null;
         List<ItemsEligibleForOder> list=orderService.getItemsEligibleForOderByOrderStatus("Pending");
         for (int i = 0; i < tblDisplayStockSummary.getRowCount(); i++) {
             colData = new HashSet(tblDisplayStockSummary.getRowCount());
             row = (Vector) data.elementAt(i);
-            is = orderService.getItemsEligibleForOderByOrderStatusAndProductCode(row.get(1).toString(), "Pending");
+           
             if (list.size() != 0) {
                 for(ItemsEligibleForOder item : list){
-                if (item.getOrderStatus().equals("Pending")) {
+                if (row.get(2).toString().equals(item.getProductCode()) && item.getOrderStatus().equals("Pending")) {
                     continue;
                 } else {
 

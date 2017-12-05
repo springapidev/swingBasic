@@ -6,7 +6,10 @@ import com.coderbd.inventory.service.ItemsEligibleForOderService;
 import com.coderbd.inventory.service.StockSummaryService;
 import com.coderbd.mobile.common.CommonMenu;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +23,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
      */
     public OrderItemsListStatusForm() {
         initComponents();
-          setJMenuBar(CommonMenu.displayMenu(this));
+        setJMenuBar(CommonMenu.displayMenu(this));
         // displayProductDataWithinTable();
         //displayOdersByStatusWithinTable("Pending");
     }
@@ -68,6 +71,10 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
         tblDisplayStockSummary = new javax.swing.JTable();
         cmbOrderstatus = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        btnChangeOrderStatus = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,7 +109,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item ID", "Item Name", "Item Code", "Qty In", "Qty Out", "Available Qty", "Order Qty"
+                "Item ID", "Item Name", "Item Code", "Qty In", "Qty Out", "Available Qty", "Order Qty", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblDisplayStockSummary);
@@ -117,6 +124,24 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Order Status");
 
+        btnChangeOrderStatus.setText("Update Status");
+        btnChangeOrderStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeOrderStatusActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setText("Confirmed");
+
+        jTextField2.setText("Cancel");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setText("Under Process");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -127,10 +152,20 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbOrderstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(485, Short.MAX_VALUE)
+                .addComponent(btnChangeOrderStatus)
+                .addGap(488, 488, 488))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +173,15 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbOrderstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnChangeOrderStatus)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
@@ -191,6 +231,58 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
         refreshTable();
         displayOdersByStatusWithinTable(item);
     }//GEN-LAST:event_cmbOrderstatusItemStateChanged
+
+    private void btnChangeOrderStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeOrderStatusActionPerformed
+        ItemsEligibleForOderService orderService = new ItemsEligibleForOderService();
+
+        //table 
+        DefaultTableModel model = (DefaultTableModel) tblDisplayStockSummary.getModel();
+        Vector data = model.getDataVector();
+        Set<ItemsEligibleForOder> colData;
+        Vector row = null;
+        ItemsEligibleForOder item = null;
+        for (int i = 0; i < tblDisplayStockSummary.getRowCount(); i++) {
+            colData = new HashSet(tblDisplayStockSummary.getRowCount());
+            row = (Vector) data.elementAt(i);
+            String s = row.get(6).toString();
+
+            item = new ItemsEligibleForOder(Integer.parseInt(s), row.get(7).toString());
+            item.setId(Integer.parseInt(row.get(0).toString()));
+            colData.add(item);
+            ItemsEligibleForOderService itemsservice = new ItemsEligibleForOderService();
+            System.out.println("size of colData: " + colData.size());
+
+            itemsservice.updateList(colData);
+
+            //Update it to product Purchase field
+            StockSummaryService pss = new StockSummaryService();
+
+            try {
+
+                if (row.get(7).toString().equals("Confirmed")) {
+                    StockSummary bs = pss.getProductSummaryByProductCode(row.get(2).toString());
+// data from db
+                    // after modification
+                    int nowPurchaseQty = bs.getPurchaseQty() + item.getOrderQty();
+                    int nowAvailableQty = bs.getAvilableQty() + item.getOrderQty();
+
+                    StockSummary bsx = new StockSummary(nowPurchaseQty, nowAvailableQty);
+                    bsx.setId(bs.getId());
+
+                    pss.updateWhenOrderConfirmed(bsx);
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("No Confirmed Status for update Stock Summary");
+            }
+
+        }
+    }//GEN-LAST:event_btnChangeOrderStatusActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
     public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) tblDisplayStockSummary.getModel();
         model.setRowCount(0);
@@ -203,7 +295,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
         List<ItemsEligibleForOder> eligibleOrderList = os.getItemsEligibleForOderByOrderStatus(orderStatus);
 
         DefaultTableModel model = (DefaultTableModel) tblDisplayStockSummary.getModel();
-        Object[] row = new Object[7];
+        Object[] row = new Object[8];
 
         for (int i = 0; i < eligibleOrderList.size(); i++) {
             row[0] = eligibleOrderList.get(i).getId();
@@ -213,6 +305,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
             row[4] = eligibleOrderList.get(i).getSoldQty();
             row[5] = eligibleOrderList.get(i).getAvilableQty();
             row[6] = eligibleOrderList.get(i).getOrderQty();
+            row[7] = eligibleOrderList.get(i).getOrderStatus();
 
             model.addRow(row);
         }
@@ -258,6 +351,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChangeOrderStatus;
     private javax.swing.JComboBox<String> cmbOrderstatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -265,6 +359,9 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblDisplayStockSummary;
     // End of variables declaration//GEN-END:variables
 }

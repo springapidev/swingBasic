@@ -53,7 +53,7 @@ public class ProductService implements ProductDao {
                 stmt.setDouble(3, s.getUnitPrice());
                 stmt.setInt(4, s.getQty());
                 stmt.setDouble(5, s.getTotalPrice());
-                  stmt.setString(6, s.getCategory());
+                stmt.setString(6, s.getCategory());
                 stmt.setString(7, s.getPurchaseDate());
                 stmt.setInt(8, s.getId());
                 int i = stmt.executeUpdate();
@@ -135,4 +135,69 @@ public class ProductService implements ProductDao {
         return p;
     }
 
+    @Override
+    public Product getProductByProductCode(String productCode) {
+        Product p = new Product();
+        try {
+
+            PreparedStatement stmt = conn.prepareStatement("select * from product where product_code=?");
+            stmt.setString(1, productCode);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                p.setId(rs.getInt(1));
+                p.setName(rs.getString(2));
+                p.setProductCode(rs.getString(3));
+                p.setUnitPrice(rs.getInt(4));
+                p.setQty(rs.getInt(5));
+                p.setTotalPrice(rs.getInt(6));
+                p.setCategory(rs.getString(7));
+                p.setPurchaseDate(rs.getString(8));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
+    }
+
+    @Override
+    public List<Product> getListOrderByCategory() {
+        List<Product> list = new ArrayList<>();
+        try {
+            Product p;
+            PreparedStatement stmt = conn.prepareStatement("SELECT distinct category FROM inventory.product order by category");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                p = new Product();
+
+                p.setCategory(rs.getString(1));
+
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public Product getProductByCategory() {
+        Product p = null;
+        try {
+
+            PreparedStatement stmt = conn.prepareStatement("SELECT distinct category FROM inventory.product order by category");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                p = new Product();
+
+                p.setCategory(rs.getString(1));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
+    }
 }

@@ -30,6 +30,11 @@ public class ItemsEligibleForOder {
         this.orderStatus = orderStatus;
     }
 
+    public ItemsEligibleForOder(int orderQty, String orderStatus) {
+        this.orderQty = orderQty;
+        this.orderStatus = orderStatus;
+    }
+
    
 
 

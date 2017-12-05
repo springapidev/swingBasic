@@ -50,22 +50,22 @@ public class ItemsEligibleForOderService implements ItemsEligibleForOderSummaryD
     public void updateList(Set<ItemsEligibleForOder> items) {
         if (items.size() > 0) {
             for (ItemsEligibleForOder item : items) {
-                PreparedStatement stmt;
+             
                 try {
-                    stmt = conn.prepareStatement("update itemseligibleforoder set orderQty=?,orderStatus=? where id=?");
+                 PreparedStatement stmt = conn.prepareStatement("update itemseligibleforoder set orderQty=?,orderStatus=? where id=?");
 
                     stmt.setInt(1, item.getOrderQty());
                     stmt.setString(2, item.getOrderStatus());
                     stmt.setInt(3, item.getId());
                     int i = stmt.executeUpdate();
-
+                    System.out.println(i + " records updated");
                 } catch (SQLException ex) {
                     Logger.getLogger(ItemsEligibleForOderService.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-        //  System.out.println(items.size() + " records inserted");
+
     }
 
     @Override

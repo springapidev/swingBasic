@@ -60,6 +60,24 @@ public class StockSummaryService implements StockSummaryDao {
     }
 
     @Override
+    public void updateWhenOrderConfirmed(StockSummary s) {
+        try {
+            if (s.getId() != 0) {
+                PreparedStatement stmt = conn.prepareStatement("update productsummary SET purchase_qty=?, avilable_qty=? where id=?");
+                stmt.setInt(1, s.getPurchaseQty());
+                stmt.setInt(2, s.getAvilableQty());
+                stmt.setInt(3, s.getId());
+                int i = stmt.executeUpdate();
+
+                System.out.println(i + " record Updated");
+            }
+            // con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(StockSummaryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
     public void updateWhenSales(StockSummary s) {
         try {
             if (s.getId() != 0) {
@@ -157,6 +175,8 @@ public class StockSummaryService implements StockSummaryDao {
         }
         return p;
     }
+
+   
 
     @Override
     public StockSummary getProductSummaryById(int id) {

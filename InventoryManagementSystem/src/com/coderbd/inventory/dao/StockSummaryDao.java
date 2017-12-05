@@ -3,6 +3,7 @@ package com.coderbd.inventory.dao;
 import com.coderbd.inventory.domain.StockSummary;
 import com.coderbd.mobile.domain.User;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -13,6 +14,8 @@ public interface StockSummaryDao {
     void save(StockSummary s);
 
     void update(StockSummary s);
+
+    public void updateWhenOrderConfirmed(StockSummary s);
 
     public void updateWhenSales(StockSummary s);
 
@@ -25,6 +28,8 @@ public interface StockSummaryDao {
     public StockSummary getProductSummaryByProductCode(String productCode);
 
     public StockSummary getProductSummaryById(int id);
-    
-     public List<StockSummary> getListForOrdersWhenStockLow(int minAvaileQty);
+
+    public List<StockSummary> getListForOrdersWhenStockLow(int minAvaileQty);
+
+
 }

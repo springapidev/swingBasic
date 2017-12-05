@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.5.58-log
+-- Server version	5.6.35-log
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -36,7 +36,7 @@ CREATE TABLE `itemseligibleforoder` (
   `orderQty` int(10) unsigned NOT NULL,
   `orderStatus` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `itemseligibleforoder`
@@ -44,27 +44,14 @@ CREATE TABLE `itemseligibleforoder` (
 
 /*!40000 ALTER TABLE `itemseligibleforoder` DISABLE KEYS */;
 INSERT INTO `itemseligibleforoder` (`id`,`product_code`,`purchase_qty`,`sold_qty`,`avilable_qty`,`product_name`,`orderQty`,`orderStatus`) VALUES 
- (10,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (11,'samj7',19,11,8,'Samsung J7',3,'Pending'),
- (12,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (13,'samj7',19,11,8,'Samsung J7',3,'Pending'),
- (14,'samj5',5,3,2,'Samsung J5',10,'Pending'),
- (15,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (16,'samj2',5,3,2,'Samsung J2',8,'Pending'),
- (17,'samj7',19,11,8,'Samsung J7',3,'Pending'),
- (18,'samj5',5,3,2,'Samsung J5',10,'Pending'),
- (19,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (20,'samj2',5,3,2,'Samsung J2',8,'Pending'),
- (21,'samSDOUS',5,4,1,'Samsung SDOUS',12,'Pending'),
- (22,'samj7',19,11,8,'Samsung J7',3,'Pending'),
- (23,'samj5',5,3,2,'Samsung J5',10,'Pending'),
- (24,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (25,'samj2',5,3,2,'Samsung J2',8,'Pending'),
- (26,'samSDOUS',5,4,1,'Samsung SDOUS',12,'Pending'),
- (27,'samj7',19,11,8,'Samsung J7',3,'Pending'),
- (28,'samj5',5,3,2,'Samsung J5',10,'Pending'),
- (29,'nok1200',11,7,4,'Nokia 1200',8,'Pending'),
- (30,'lg5800',5,4,1,'Lg Style 5800',10,'Pending');
+ (344,'nok1200',11,7,4,'Nokia 1200',20,'Confirmed'),
+ (345,'samj7',19,11,8,'Samsung J7',12,'Confirmed'),
+ (346,'samj5',5,3,2,'Samsung J5',25,'Confirmed'),
+ (347,'samj2',5,3,2,'Samsung J2',30,'Confirmed'),
+ (348,'samSDOUS',5,4,1,'Samsung SDOUS',0,'Under Process'),
+ (349,'lg5800',5,4,1,'Lg Style 5800',0,'Cancel'),
+ (350,'nok1100',28,28,0,'Nokia 1100',0,'Pending'),
+ (351,'samSDOUS',5,4,1,'Samsung SDOUS',0,'Pending');
 /*!40000 ALTER TABLE `itemseligibleforoder` ENABLE KEYS */;
 
 
@@ -155,11 +142,11 @@ CREATE TABLE `productsummary` (
 
 /*!40000 ALTER TABLE `productsummary` DISABLE KEYS */;
 INSERT INTO `productsummary` (`id`,`product_code`,`purchase_qty`,`sold_qty`,`avilable_qty`,`product_name`) VALUES 
- (2,'nok1100',28,8,20,'Nokia 1100'),
- (3,'nok1200',11,7,4,'Nokia 1200'),
- (4,'samj7',19,11,8,'Samsung J7'),
- (5,'samj5',5,3,2,'Samsung J5'),
- (6,'samj2',5,3,2,'Samsung J2'),
+ (2,'nok1100',28,28,0,'Nokia 1100'),
+ (3,'nok1200',31,7,24,'Nokia 1200'),
+ (4,'samj7',31,11,20,'Samsung J7'),
+ (5,'samj5',30,3,27,'Samsung J5'),
+ (6,'samj2',35,3,32,'Samsung J2'),
  (7,'samSDOUS',5,4,1,'Samsung SDOUS'),
  (8,'lg5800',5,4,1,'Lg Style 5800'),
  (9,'sym1548',13,1,12,'Symphony 1548');
@@ -183,7 +170,7 @@ CREATE TABLE `sales_details` (
   `customer_name` varchar(45) DEFAULT NULL,
   `customer_mobile` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sales_details`
@@ -202,7 +189,8 @@ INSERT INTO `sales_details` (`id`,`product_name`,`product_code`,`qty`,`unit_pric
  (12,'Samsung SDOUS','samSDOUS',4,20000,'80000','','31-03-2017','Atik','01684554482'),
  (13,'Lg Style 5800','lg5800',4,20000,'80000','','22-04-2017','Urmi','01684554478'),
  (14,'Symphony 1548','sym1548',1,4500,'4500','','16-05-2017','Ruhul','01686239148'),
- (15,'Samsung J7','samj7',8,30000,'240000','','15-06-2017','Atik','0168656545');
+ (15,'Samsung J7','samj7',8,30000,'240000','','15-06-2017','Atik','0168656545'),
+ (16,'Nokia 1100','nok1100',20,1600,'32000','','25-07-2017','Belayet','54546666695');
 /*!40000 ALTER TABLE `sales_details` ENABLE KEYS */;
 
 
