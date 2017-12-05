@@ -13,7 +13,7 @@ import javax.swing.JMenuItem;
 
 /**
  *
- * @author Rajaul Islam
+ * @author Sanzida Nasrin
  */
 public class CommonMenu {
 
