@@ -23,7 +23,7 @@ public final class OrderItemsListForm extends javax.swing.JFrame {
      */
     public OrderItemsListForm() {
         initComponents();
-          setJMenuBar(CommonMenu.displayMenu(this));
+        setJMenuBar(CommonMenu.displayMenu(this));
         displayProductDataWithinTable();
     }
 
@@ -184,28 +184,38 @@ public final class OrderItemsListForm extends javax.swing.JFrame {
         //table 
         DefaultTableModel model = (DefaultTableModel) tblDisplayStockSummary.getModel();
         Vector data = model.getDataVector();
-        Set<ItemsEligibleForOder> colData = new HashSet(tblDisplayStockSummary.getRowCount());
- ItemsEligibleForOder is=null;
+        Set<ItemsEligibleForOder> colData;
+        ItemsEligibleForOder is =new ItemsEligibleForOder();
+        Vector row = null;
+        List<ItemsEligibleForOder> list=orderService.getItemsEligibleForOderByOrderStatus("Pending");
         for (int i = 0; i < tblDisplayStockSummary.getRowCount(); i++) {
-            Vector row = (Vector) data.elementAt(i);
-            is = orderService.getItemsEligibleForOderByOrderStatus(Integer.parseInt(row.get(0).toString()), "Pending");
-            if (is.getOrderStatus() != null) {
-                if (is.getOrderStatus().equals("Pending")) {
+            colData = new HashSet(tblDisplayStockSummary.getRowCount());
+            row = (Vector) data.elementAt(i);
+            is = orderService.getItemsEligibleForOderByOrderStatusAndProductCode(row.get(1).toString(), "Pending");
+            if (list.size() != 0) {
+                for(ItemsEligibleForOder item : list){
+                if (item.getOrderStatus().equals("Pending")) {
                     continue;
                 } else {
+
                     colData.add(new ItemsEligibleForOder(Integer.parseInt(row.get(0).toString()), row.get(1).toString(), row.get(2).toString(), Integer.parseInt(row.get(3).toString()), Integer.parseInt(row.get(4).toString()), Integer.parseInt(row.get(5).toString()), Integer.parseInt(row.get(6).toString()), "Pending"));
                 }
+                }
             } else {
-                colData.add(new ItemsEligibleForOder(Integer.parseInt(row.get(0).toString()), row.get(1).toString(), row.get(2).toString(), Integer.parseInt(row.get(3).toString()), Integer.parseInt(row.get(4).toString()), Integer.parseInt(row.get(5).toString()), Integer.parseInt(row.get(6).toString()), "Pending"));
+                ItemsEligibleForOder items = new ItemsEligibleForOder(Integer.parseInt(row.get(0).toString()), row.get(1).toString(), row.get(2).toString(), Integer.parseInt(row.get(3).toString()), Integer.parseInt(row.get(4).toString()), Integer.parseInt(row.get(5).toString()), Integer.parseInt(row.get(6).toString()), "Pending");
+                colData.add(items);
             }
             ItemsEligibleForOderService itemsservice = new ItemsEligibleForOderService();
-            itemsservice.saveList(colData);
+            System.out.println("size of colData: " + colData.size());
+           
+                itemsservice.saveList(colData);
+     
         }
     }//GEN-LAST:event_btnOrderItemsToHRActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

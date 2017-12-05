@@ -43,7 +43,7 @@ public class ItemsEligibleForOderService implements ItemsEligibleForOderSummaryD
 
             }
         }
-        //  System.out.println(items.size() + " records inserted");
+        System.out.println(items.size() + " records inserted");
     }
 
     @Override
@@ -94,12 +94,39 @@ public class ItemsEligibleForOderService implements ItemsEligibleForOderSummaryD
     }
 
     @Override
-    public ItemsEligibleForOder getItemsEligibleForOderByOrderStatus(int id, String orderStatus) {
+    public ItemsEligibleForOder getItemEligibleForOderByOrderStatus(String orderStatus) {
         ItemsEligibleForOder p = new ItemsEligibleForOder();
         try {
 
-            PreparedStatement stmt = conn.prepareStatement("select * from itemseligibleforoder where id=? and orderStatus=?");
-            stmt.setInt(1, id);
+            PreparedStatement stmt = conn.prepareStatement("select * from itemseligibleforoder where orderStatus=?");
+            stmt.setString(1, orderStatus);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                p.setId(rs.getInt(1));
+                p.setProductCode(rs.getString(2));
+                p.setPurchaseQty(rs.getInt(3));
+                p.setSoldQty(rs.getInt(4));
+                p.setAvilableQty(rs.getInt(5));
+                p.setProductName(rs.getString(6));
+                p.setOrderQty(rs.getInt(7));
+                p.setOrderStatus(rs.getString(8));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemsEligibleForOderService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
+    }
+
+    @Override
+    public ItemsEligibleForOder getItemsEligibleForOderByOrderStatusAndProductCode(String productCode, String orderStatus) {
+        ItemsEligibleForOder p = new ItemsEligibleForOder();
+        try {
+
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM itemseligibleforoder where product_code=? and orderStatus=?");
+            stmt.setString(1, productCode);
             stmt.setString(2, orderStatus);
 
             ResultSet rs = stmt.executeQuery();

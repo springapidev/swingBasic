@@ -21,6 +21,9 @@ public interface ItemsEligibleForOderSummaryDao {
 
     public List<ItemsEligibleForOder> getList();
 
-    public ItemsEligibleForOder getItemsEligibleForOderByOrderStatus(int id, String orderStatus);
-     public List<ItemsEligibleForOder> getItemsEligibleForOderByOrderStatus(String orderStatus);
+    public ItemsEligibleForOder getItemsEligibleForOderByOrderStatusAndProductCode(String productCode, String orderStatus);
+
+
+    public ItemsEligibleForOder getItemEligibleForOderByOrderStatus(String orderStatus);
+    public List<ItemsEligibleForOder> getItemsEligibleForOderByOrderStatus(String orderStatus);
 }
