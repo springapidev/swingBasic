@@ -2,7 +2,7 @@ package com.coderbd.inventory.view;
 
 import com.coderbd.inventory.domain.StatisticsForDashBoard;
 import com.coderbd.inventory.service.StatisticsForDashBoardService;
-import com.coderbd.mobile.common.CommonMenu;
+import com.coderbd.mobile.common.CommonMenuForUser;
 import java.util.List;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +18,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
      */
     public InventoryDashBoardForm() {
         initComponents();
-        setJMenuBar(CommonMenu.displayMenu(this));
+        setJMenuBar(CommonMenuForUser.displayMenu(this));
         displayItemStatisticsTillToday();
         displayItemStatisticsTillTodayByCategory("Nokia");
         displayProductCategory();
@@ -40,11 +40,6 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDisplayStockSummary = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblDisplayByBrandOrCategory = new javax.swing.JTable();
-        cmbCategory = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +56,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(185, 185, 185)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,8 +87,8 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,49 +111,6 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
             .addGap(0, 36, Short.MAX_VALUE)
         );
 
-        tblDisplayByBrandOrCategory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Item Name", "Item Code", "Brand Or Category", "Total Item In", "Total Item Out", "Total Item Available"
-            }
-        ));
-        jScrollPane2.setViewportView(tblDisplayByBrandOrCategory);
-
-        cmbCategory.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCategoryItemStateChanged(evt);
-            }
-        });
-
-        jLabel2.setText("Select Brand Or Category");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,9 +122,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 294, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,9 +131,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -191,17 +139,11 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbCategoryItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoryItemStateChanged
-        String code = cmbCategory.getItemAt(cmbCategory.getSelectedIndex());
-        displayItemStatisticsTillTodayByCategory(code);
-     
-    }//GEN-LAST:event_cmbCategoryItemStateChanged
     public void displayProductCategory() {
         StatisticsForDashBoardService sdservice = new StatisticsForDashBoardService();
         Set<StatisticsForDashBoard> codes = sdservice.getListOfProductCategory();
         for (StatisticsForDashBoard s : codes) {
-            cmbCategory.addItem(s.getBrandOrCategory());
+          //  cmbCategory.addItem(s.getBrandOrCategory());
         }
     }
 
@@ -229,7 +171,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
         StatisticsForDashBoardService statisticsService = new StatisticsForDashBoardService();
         List<StatisticsForDashBoard> pList = statisticsService.getItemStatisticsTillToday();
         System.out.println("Size: " + pList.size());
-        DefaultTableModel model = (DefaultTableModel) tblDisplayByBrandOrCategory.getModel();
+//        DefaultTableModel model = (DefaultTableModel) tblDisplayByBrandOrCategory.getModel();
         Object[] row = new Object[6];
 
         for (int i = 0; i < pList.size(); i++) {
@@ -240,7 +182,7 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
             row[4] = pList.get(i).getTotalItemOut();
             row[5] = pList.get(i).getTotalItemAvailable();
 
-            model.addRow(row);
+      //      model.addRow(row);
         }
 
     }
@@ -281,16 +223,11 @@ public final class InventoryDashBoardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbCategory;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblDisplayByBrandOrCategory;
     private javax.swing.JTable tblDisplayStockSummary;
     // End of variables declaration//GEN-END:variables
 }

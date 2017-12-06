@@ -253,7 +253,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
             System.out.println("size of colData: " + colData.size());
 
             itemsservice.updateList(colData);
-
+/*
             //Update it to product Purchase field
             StockSummaryService pss = new StockSummaryService();
 
@@ -276,7 +276,7 @@ public final class OrderItemsListStatusForm extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.out.println("No Confirmed Status for update Stock Summary");
             }
-
+*/
         }
     }//GEN-LAST:event_btnChangeOrderStatusActionPerformed
 

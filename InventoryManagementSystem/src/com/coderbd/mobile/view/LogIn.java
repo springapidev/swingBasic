@@ -5,6 +5,7 @@
  */
 package com.coderbd.mobile.view;
 
+import com.coderbd.inventory.view.InventoryDashBoardForm;
 import com.coderbd.mobile.domain.User;
 import com.coderbd.mobile.service.UserService;
 
@@ -132,8 +133,14 @@ public class LogIn extends javax.swing.JFrame {
         if (txtuserName.getText().matches(".*[a-z].*") || txtPass.getText().length() < 6) {
             User user = service.getUserByUsername(txtuserName.getText());
             if (user.getUsername().equals(txtuserName.getText()) && user.getPassword().equals(txtPass.getText())) {
-                new DashBoard().setVisible(true);
-                this.setVisible(false);
+                if (user.getUserType().equals("admin")) {
+                    new DashBoard().setVisible(true);
+                    this.setVisible(false);
+                } else if (user.getUserType().equals("user")) {
+                    new InventoryDashBoardForm().setVisible(true);
+                    this.setVisible(false);
+                }
+
             }
         } else {
             lblMsg.setText("Insert username and password!");
