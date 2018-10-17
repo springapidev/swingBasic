@@ -25,7 +25,7 @@ public class TrySpringLayout {
     Container content = aWindow.getContentPane();  // Get the content pane
     content.setLayout(layout);                     // Set the container layout mgr
 
-    JButton[] buttons = new JButton[6];            // Array to store buttons
+    JButton[] buttons = new JButton[20];            // Array to store buttons
     SpringLayout.Constraints constr = null;
     for(int i = 0; i < buttons.length; i++) {
       buttons[i] = new JButton("Press " + (i+1));

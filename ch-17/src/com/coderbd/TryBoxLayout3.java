@@ -7,7 +7,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
