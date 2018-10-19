@@ -24,4 +24,15 @@
 /PrivateTusionManagement/dist/
 /InventoryManagementSystem/nbproject/private/
 /InventoryManagementSystem/build/
+<<<<<<< HEAD
 /InventoryManagementSystem/dist/
+=======
+/testGame/nbproject/private/
+/testGame/build/
+/CarRace/nbproject/private/
+/CarRace/build/
+/CommonMenu/nbproject/private/
+/CommonMenu/build/
+/ch-18/nbproject/private/
+/ch-18/build/
+>>>>>>> 0261d093b6d58436a728ce962faf7f3a8ae99887
