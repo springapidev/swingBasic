@@ -21,7 +21,7 @@ public class EmployeesService implements CommonDao {
         List<Employees> list = new ArrayList<>();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from employees");
+            PreparedStatement ps = conn.prepareStatement("select * from emp");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Employees em = new Employees();
@@ -38,18 +38,17 @@ public class EmployeesService implements CommonDao {
     }
 
     @Override
-    public void insert() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void insert(Employees e) {
 
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps = conn.prepareStatement("insert into emp(id, name) values(?,?)");
+            ps.setInt(1, e.getEmployeeID());
+            ps.setString(2, e.getFirstName());
+            ps.executeUpdate();
+            System.out.println("1 data inserted");
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeesService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
