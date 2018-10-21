@@ -1,0 +1,54 @@
+========Swing Crud Project=========
+Step-0:Create a Java Project
+Step-1:Add Oracle JDBC Driver under library
+Step-2: Make packages like below:
+		com.coderbd.connection
+		com.coderbd.domain
+		com.coderbd.dao
+		com.coderbd.daoImpl		
+		com.coderbd.view
+		com.coderbd.test
+Step-3: Create DBConnection Class like below
+	public class DbConnection {
+    private static final String DRIVERNAME = "oracle.jdbc.driver.OracleDriver";
+    private static final String HOST = "jdbc:oracle:thin:@localhost";
+    private static final String PORT = "1521";
+    private static Connection connection;
+    private static String url = HOST + ":" + PORT + ":";
+    public static Connection getConnection(String dbname,
+            String dbUserName, String dbPass) {
+        try {
+            connection = DriverManager.getConnection(url + dbname, dbUserName, dbPass);
+            System.out.println("::Connnected::");
+        } catch (SQLException ex) {
+         //   ex.printStackTrace();
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return connection;
+    }
+	}
+Step-4:create a domain class like Student
+		class Student{
+		private int id;
+		private String name;
+		//getter and setter
+		}
+Step-5:create DAO interface like below
+      interface StudentDAO{	
+	  void createTable();	  
+	  void insert(Student s);
+	  void update(Student s);
+	  void delete(Student s);
+	  Student getById(Student s);
+	  List<Student> getStudents();	  
+	  }
+Step-6: create DAO(Data Access Object) impleemntation class like
+	class StudentDaoImpl implements StudentDAO{
+	 Sub-steps: 
+	 0. implements all abstract methods
+	 1. First create object of Connection interface
+	 2. one by one implements methods	
+	}
+Step-1:
+Step-1:
+Step-1:
