@@ -49,6 +49,6 @@ Step-6: create DAO(Data Access Object) impleemntation class like
 	 1. First create object of Connection interface
 	 2. one by one implements methods	
 	}
-Step-1:
+Step-7: cteate View using JFrame
 Step-1:
 Step-1:
