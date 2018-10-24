@@ -510,8 +510,8 @@ public boolean checkEmailValidityNew(String email) {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtName.setText("");
         txtEmail.setText("");
-        txtAge.setText("");
-        buttonGroup1.clearSelection();
+        txtAge.setText("0");
+        rMale.setSelected(true);
         chkCoding.setSelected(false);
         chkReading.setSelected(false);
         chkWriting.setSelected(false);
