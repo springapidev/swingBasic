@@ -138,7 +138,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Round");
 
-        cmbRound.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select A Round", "Round-32", "Round-33", "Round-34", "Round-35" }));
+        cmbRound.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select A Round", "Round-32", "Round-33", "Round-34", "Round-35", "Round-36", "Round-37", "Round-38", "Round-39" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Note");
