@@ -19,8 +19,8 @@ public class TryWindow4 {
         aWindow.setBounds(wndSize.width / 4, wndSize.height / 4, // Position
                 wndSize.width / 2, wndSize.height / 2);  // Size
         aWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        aWindow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        aWindow.getContentPane().setBackground(Color.MAGENTA);
+        aWindow.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        aWindow.getContentPane().setBackground(Color.RED);
         aWindow.setVisible(true);                              // Display the window
     }
 }
