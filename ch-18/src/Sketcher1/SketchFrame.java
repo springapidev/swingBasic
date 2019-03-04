@@ -12,7 +12,19 @@ import javax.swing.KeyStroke;
 import static java.awt.event.InputEvent.*;
 
 public class SketchFrame extends JFrame {
+
     // Constructor
+    private JMenuBar menuBar = new JMenuBar();     // Window menu bar
+
+    // File menu items
+    private JMenuItem newItem, openItem, closeItem,
+            saveItem, saveAsItem, printItem;
+
+    // Element menu items
+    private JRadioButtonMenuItem lineItem, rectangleItem, circleItem, // Types
+            curveItem, textItem;
+    private JCheckBoxMenuItem redItem, yellowItem, // Colors
+            greenItem, blueItem;
 
     public SketchFrame(String title) {
         setTitle(title);                              // Set the window title
@@ -78,15 +90,4 @@ public class SketchFrame extends JFrame {
         menuBar.add(elementMenu);                    // Add the element menu
     }
 
-    private JMenuBar menuBar = new JMenuBar();     // Window menu bar
-
-    // File menu items
-    private JMenuItem newItem, openItem, closeItem,
-            saveItem, saveAsItem, printItem;
-
-    // Element menu items
-    private JRadioButtonMenuItem lineItem, rectangleItem, circleItem, // Types
-            curveItem, textItem;
-    private JCheckBoxMenuItem redItem, yellowItem, // Colors
-            greenItem, blueItem;
 }

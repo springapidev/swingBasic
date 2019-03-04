@@ -283,6 +283,7 @@ public class EvidenceFinalEx extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Data"));
 
+        tblDisplay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -348,7 +349,7 @@ public boolean checkEmailValidityNew(String email) {
         int atpos = email.indexOf("@");
         int dotpos = email.lastIndexOf(".");
 
-        if (atpos > 1 && (dotpos - atpos) > 2 && dotpos < email.length()- 2) {
+        if (atpos > 1 && (dotpos - atpos) > 2 && dotpos < email.length() - 2) {
             //  System.out.println("Email is valid");
             return true;
         } else {
@@ -371,11 +372,12 @@ public boolean checkEmailValidityNew(String email) {
 //        return false;
 //    }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       //Variable dec. and initialize are for 7 fields
-        String name = "", email = "", age = "0", gender = "", 
+        //Variable dec. and initialize are for 7 fields
+        String name = "", email = "", age = "0", gender = "",
                 hobby = "", round = "", note = "";
         //Validation is for Name field
         if (txtName.getText().length() < 1) {
+           txtName.setToolTipText("Enter your Name");
             JOptionPane.showMessageDialog(null, "Enter your Name");
         } //Validation is for Email field
         else if (!checkEmailValidityNew(txtEmail.getText()) || txtEmail.getText().length() < 1) {
@@ -420,7 +422,7 @@ public boolean checkEmailValidityNew(String email) {
             round = cmbRound.getItemAt(cmbRound.getSelectedIndex());
             note = tNote.getText();
 
-            Student student = new Student(name, email, Integer.parseInt(age), 
+            Student student = new Student(name, email, Integer.parseInt(age),
                     gender, hobby, round, note);
             List<Student> students = new ArrayList<>();
             students.add(student);
@@ -461,7 +463,7 @@ public boolean checkEmailValidityNew(String email) {
     }//GEN-LAST:event_clearTableActionPerformed
 
     private void tblDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisplayMouseClicked
-/*        int i = tblDisplay.getSelectedRow();
+        /*        int i = tblDisplay.getSelectedRow();
         TableModel model = tblDisplay.getModel();
         txtName.setText(model.getValueAt(i, 0).toString());
         txtEmail.setText(model.getValueAt(i, 1).toString());
@@ -504,7 +506,7 @@ public boolean checkEmailValidityNew(String email) {
 
         //  cmbCountry.setSelectedIndex(i);
         tNote.setText(model.getValueAt(i, 6).toString());
-        */
+         */
     }//GEN-LAST:event_tblDisplayMouseClicked
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -531,13 +533,15 @@ public boolean checkEmailValidityNew(String email) {
     }//GEN-LAST:event_txtAgeKeyPressed
 
     private void btnReadFromFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadFromFileActionPerformed
-        String columns[] = {" Name ", " Age ", " Email ", "Gender"," Hobby "," Round "," Note "};
-        DefaultTableModel tableModel;
-        // table with 7 columns
-        tableModel = new DefaultTableModel(0, 7);
-        tableModel.setColumnIdentifiers(columns);
-        tblDisplay.setModel(tableModel);
-        Utils.displayStudentsdataFromFile("molyIsrat", tableModel);
+//        String columns[] = {" Name ", " Age ", " Email ", "Gender"," Hobby "," Round "," Note "};
+//        DefaultTableModel tableModel;
+//        // table with 7 columns
+//        tableModel = new DefaultTableModel(0, 7);
+//        tableModel.setColumnIdentifiers(columns);
+//        tblDisplay.setModel(tableModel);
+
+        DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
+        Utils.displayStudentsdataFromFile("molyIsrat", model);
     }//GEN-LAST:event_btnReadFromFileActionPerformed
 
     /**

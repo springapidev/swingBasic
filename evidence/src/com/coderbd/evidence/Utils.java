@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Utils {
 
-/*
+    /*
 
     public static void main(String[] args) throws Exception {
         List<Student> list = new ArrayList<>();
@@ -25,8 +25,8 @@ public class Utils {
 
         writeTofile("student_infox", list);
     }
-*/
-    public static void writeTofile(String filename, List<Student> students) throws Exception {
+     */
+    public static void writeTofile(String filename, List<Student> students) {
         File destFile = new File(filename + ".txt");
         try {
             if (destFile.exists() == false) {
@@ -42,22 +42,20 @@ public class Utils {
             System.out.println("COULD NOT LOG!!");
         }
     }
-    
-    public static void displayStudentsdataFromFile(String filename, DefaultTableModel model){
-    String line;
-    BufferedReader reader;
-    try{       
-        reader = new BufferedReader(new FileReader(filename+".txt"));
 
-        while((line = reader.readLine()) != null)
-        {
-           model.addRow(line.split(", ")); //this has a comma and a space bc that  is how the file is written to
+    public static void displayStudentsdataFromFile(String filename, DefaultTableModel model) {
+        String line;
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(filename + ".txt"));
+
+            while ((line = reader.readLine()) != null) {
+                model.addRow(line.split(", ")); //this has a comma and a space bc that  is how the file is written to
+            }
+            reader.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Buffered Reader issue.");
         }
-        reader.close();
-     }
-    catch(IOException e){
-        JOptionPane.showMessageDialog(null, "Buffered Reader issue.");
-    }
 
-}
+    }
 }

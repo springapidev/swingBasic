@@ -17,13 +17,20 @@ import java.util.Random;               // For random number generator
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Lottery extends JApplet {
+public class Lottery extends JApplet {    
+  // An array of custom buttons for the selected numbers
+  private Selection[] luckyNumbers = new Selection[numberCount]; 
+  final public static int PICK_LUCKY_NUMBERS = 1;     // Select button ID
+  final public static int COLOR = 2;                 // Color button ID  
+  // swap colors
+  Color flipColor = new Color(Color.YELLOW.getRGB()^Color.RED.getRGB());   
+  Color startColor = Color.YELLOW;                    // start color
+  private static Random choice = new Random();        // Random number generator
   // Generate numberCount random selections from the values array
   static int[] getNumbers() {
     int[] numbers = new int[numberCount];  // Store for the numbers to be returned
     int candidate = 0;                     // Stores a candidate selection
     for(int i = 0; i < numberCount; i++) { // Loop to find the selections
-
       search:
       // Loop to find a new selection different from any found so far
       for(;;) {
@@ -39,7 +46,6 @@ public class Lottery extends JApplet {
     }
     return numbers;                         // Return the selections
   }
-
   // Initialize the applet
   public void init() {
     SwingUtilities.invokeLater(             // Create interface components
@@ -49,7 +55,6 @@ public class Lottery extends JApplet {
         }
      } );
   }
-
   // Create User Interface for applet
   public void createGUI() {
     // Set up the lucky numbers buttons...
@@ -180,16 +185,4 @@ public class Lottery extends JApplet {
       values[i] = i + minValue;
   }
 
-  // An array of custom buttons for the selected numbers
-  private Selection[] luckyNumbers = new Selection[numberCount]; 
-
-  final public static int PICK_LUCKY_NUMBERS = 1;     // Select button ID
-  final public static int COLOR = 2;                  // Color button ID
-  
-  // swap colors
-  Color flipColor = new Color(Color.YELLOW.getRGB()^Color.RED.getRGB()); 
-  
-  Color startColor = Color.YELLOW;                    // start color
-
-  private static Random choice = new Random();        // Random number generator
 }
