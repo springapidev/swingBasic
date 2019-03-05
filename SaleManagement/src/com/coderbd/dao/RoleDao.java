@@ -1,11 +1,13 @@
 package com.coderbd.dao;
 
 import com.coderbd.pojo.Role;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface RoleDao {
 
-    void createTable();
+    void createTable(String sql);
 
     void save(Role role);
 
@@ -18,4 +20,5 @@ public interface RoleDao {
     void delete(int id);
 
     List<Role> getRoles();
+
 }

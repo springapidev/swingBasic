@@ -10,6 +10,7 @@ public class Metadata {
 
     static Connection connection = CustomDBConnection.getDBConnection();
     static DatabaseMetaData metadata = null;
+
     // Static block for initialization
     static {
         try {
@@ -19,6 +20,7 @@ public class Metadata {
                     + e.getMessage());
         }
     }
+
     public static void printGeneralMetadata() throws SQLException {
         System.out.println("Database Name: "
                 + metadata.getDatabaseProductName());
@@ -62,6 +64,11 @@ public class Metadata {
 
     public static void main(String[] args) {
         try {
+
+            for (Object obj : getTablesMetadata()) {
+                System.out.println("Table Name::: " + obj.toString());
+            }
+
             printGeneralMetadata();
             // Print all the tables of the database scheme, with their names and
             // structure

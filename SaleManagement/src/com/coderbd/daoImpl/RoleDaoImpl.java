@@ -3,6 +3,7 @@ package com.coderbd.daoImpl;
 import com.coderbd.conn.CustomDBConnection;
 import com.coderbd.dao.RoleDao;
 import com.coderbd.pojo.Role;
+import com.coderbd.view.DatabaseTool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,10 +16,10 @@ public class RoleDaoImpl implements RoleDao {
     Connection connection = CustomDBConnection.getDBConnection();
 
     @Override
-    public void createTable() {
-        String sql = "create table IF NOT EXISTS role(id int(2) auto_increment primary key, role_name varchar(20) unique)";
+    public void createTable(String sql) {
+        // String sql = "create table IF NOT EXISTS role(id int(2) auto_increment primary key, role_name varchar(20) unique)";
         try {
-            PreparedStatement pstm = connection.prepareStatement(sql);
+            PreparedStatement pstm = DatabaseTool.conn.prepareStatement(sql);
             pstm.execute();
             System.out.println("Table Created!");
         } catch (SQLException ex) {

@@ -6,8 +6,8 @@ import com.coderbd.daoImpl.RoleDaoImpl;
 public class RoleTest {
 
     public static void main(String[] args) {
-        RoleDao roleDao = new RoleDaoImpl();
-        roleDao.createTable();
+       
+       
     }
 
 }
