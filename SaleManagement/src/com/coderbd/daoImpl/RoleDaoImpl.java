@@ -6,14 +6,20 @@ import com.coderbd.pojo.Role;
 import com.coderbd.view.DatabaseTool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RoleDaoImpl implements RoleDao {
 
-    Connection connection = CustomDBConnection.getDBConnection();
+
+    public RoleDaoImpl() {
+
+        System.out.println("DatabaseTool.conn: " + DatabaseTool.getConn());
+    }
 
     @Override
     public void createTable(String sql) {
@@ -31,7 +37,7 @@ public class RoleDaoImpl implements RoleDao {
     public void save(Role role) {
         String sql = "insert into role(role_name) values(?)";
         try {
-            PreparedStatement pstm = connection.prepareStatement(sql);
+            PreparedStatement pstm = DatabaseTool.conn.prepareStatement(sql);
             pstm.setString(1, role.getRoleName());
             pstm.executeUpdate();
             System.out.println("Insert success!");
@@ -62,7 +68,28 @@ public class RoleDaoImpl implements RoleDao {
 
     @Override
     public List<Role> getRoles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Role> list = new ArrayList<>();
+        String sql = "select * from role";
+        try {
+
+            PreparedStatement ps = CustomDBConnection.getDBConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Role role = new Role(rs.getInt(1), rs.getString(2));
+                list.add(role);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+    }
+
+    public static void main(String[] args) {
+        RoleDaoImpl obj = new RoleDaoImpl();
+
+        System.out.println("size: " + obj.getRoles().size());
     }
 
 }

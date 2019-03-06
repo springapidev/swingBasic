@@ -14,11 +14,14 @@ public class DatabaseTool extends javax.swing.JFrame {
     /**
      * Creates new form DatabaseTool
      */
-    public static Connection conn = null;
-    
+    public static Connection conn;
+    //public RoleView 
+   
+
     public DatabaseTool() {
         initComponents();
         conn = CustomDBConnection.getDBConnection(txtHost.getText().trim(), txtPort.getText().trim(), txtDbName.getText().trim(), txtUserName.getText().trim(), txtPassword.getText().trim());
+        System.out.println("Connection: " + conn);
     }
 
     /**
@@ -203,6 +206,7 @@ public class DatabaseTool extends javax.swing.JFrame {
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
         // TODO add your handling code here:
         conn = CustomDBConnection.getDBConnection(txtHost.getText().trim(), txtPort.getText().trim(), txtDbName.getText().trim(), txtUserName.getText().trim(), txtPassword.getText().trim());
+        
         lblConnectionStatus.setText("Connected");
     }//GEN-LAST:event_btnConnectActionPerformed
 
@@ -220,21 +224,21 @@ public class DatabaseTool extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                    
+
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(DatabaseTool.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(DatabaseTool.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(DatabaseTool.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DatabaseTool.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -249,7 +253,9 @@ public class DatabaseTool extends javax.swing.JFrame {
             }
         });
     }
-
+ public static Connection getConn() {
+        return conn;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConnect;
     private javax.swing.JButton btnExecute;
