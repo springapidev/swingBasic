@@ -25,7 +25,7 @@ public class RoleView extends javax.swing.JFrame {
      */
     public RoleView() {
         initComponents();
-        //  displayRoleListIntoTable();
+          displayRoleListIntoTable();
 
     }
 
@@ -38,7 +38,7 @@ public class RoleView extends javax.swing.JFrame {
 
         for (int i = 0; i < list.size(); i++) {
             cols[0] = list.get(i).getId();
-            cols[1] = list.get(1).getRoleName();
+            cols[1] = list.get(i).getRoleName();
             model.addRow(cols);
         }
     }
@@ -183,6 +183,7 @@ public class RoleView extends javax.swing.JFrame {
                 } else {
                     Role role = new Role(roleName);
                     obj.save(role);
+                    displayRoleListIntoTable();
                     JOptionPane.showMessageDialog(null, "Successfully Saved!");
                 }
             } catch (NullPointerException ne) {             
