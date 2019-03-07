@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface RoleDao {
 
-    void createTable(String sql);
+    void createTable();
 
     void save(Role role);
 

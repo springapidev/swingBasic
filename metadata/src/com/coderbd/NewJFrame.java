@@ -28,6 +28,7 @@ public class NewJFrame extends javax.swing.JFrame {
         List<String> colsList = new ArrayList();
         colsList.add("ID");
         colsList.add("Name");
+        colsList.add("CITY");
         colsList.add("Country");
 
         int colsNo = colsList.size();

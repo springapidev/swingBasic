@@ -194,7 +194,7 @@ public class DatabaseTool extends javax.swing.JFrame {
         } else {
             RoleDao roleDao = new RoleDaoImpl();
             try {
-                roleDao.createTable(taSql.getText().trim());
+             //   roleDao.createTable(taSql.getText().trim());
                 lblDisplay.setText("Success");
             } catch (Exception e) {
                 lblDisplay.setText("Check Error");
