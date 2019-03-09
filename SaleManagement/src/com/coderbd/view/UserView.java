@@ -41,14 +41,21 @@ public class UserView extends javax.swing.JFrame {
 
     public void displayRoleListIntoTable() {
         clearTable();
-        RoleDao dao = new RoleDaoImpl();
-        List<Role> list = dao.getRoles();
+        RoleDao roleDao = new RoleDaoImpl();
+
+        UserDao dao = new UserDaoImpl();
+        List<User> list = dao.getUsers();
         DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
-        Object[] cols = new Object[2];
+        Object[] cols = new Object[6];
 
         for (int i = 0; i < list.size(); i++) {
             cols[0] = list.get(i).getId();
-            cols[1] = list.get(1).getRoleName();
+            cols[1] = list.get(i).getFullName();
+            cols[2] = list.get(i).getUserName();
+            cols[3] = list.get(i).getPassword();
+            cols[4] = list.get(i).getMobile();
+            Role role = roleDao.getRoleById(list.get(i).getRole().getId());
+            cols[5] = role.getRoleName();
             model.addRow(cols);
         }
     }
@@ -221,8 +228,6 @@ public class UserView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-
         String selectRole = cmbRole.getItemAt(cmbRole.getSelectedIndex());
         int id = Integer.parseInt(selectRole.substring(0, 2).trim());
         Role role = new Role(id);
