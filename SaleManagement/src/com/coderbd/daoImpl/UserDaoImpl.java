@@ -91,22 +91,22 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getUsers() {
-      List<User> users=new ArrayList();
-      User user;
-      String sql="select * from user";
+        List<User> users = new ArrayList();
+        User user;
+        String sql = "select * from user";
         try {
-            PreparedStatement ps=conn.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                Role role=new Role(rs.getInt(6));
-            user=new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), role);
-            users.add(user);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Role role = new Role(rs.getInt(6));
+                user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), role);
+                users.add(user);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-      return users;
+
+        return users;
     }
 
 }

@@ -29,6 +29,24 @@ public class UserView extends javax.swing.JFrame {
         displayRoleListIntoTable();
         displayRoleAtComboBox();
     }
+    private static int userId;
+
+    public void getSelectedRowData() {
+        int i = tblDisplay.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
+        userId = Integer.parseInt(model.getValueAt(i, 0).toString());
+        txtFullname.setText(model.getValueAt(i, 1).toString());
+        txtUsername.setText(model.getValueAt(i, 2).toString());
+        txtPassword.setText(model.getValueAt(i, 3).toString());
+        txtMobile.setText(model.getValueAt(i, 4).toString());
+        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
+
+//        if (model.getValueAt(i, 5).toString().trim().equalsIgnoreCase("admin")) {
+//            cmbRole.setSelectedIndex(1);
+//        } if (model.getValueAt(i, 5).toString().trim().equalsIgnoreCase("user")) {
+//            cmbRole.setSelectedIndex(2);
+//        }
+    }
 
     public void displayRoleAtComboBox() {
         RoleDao dao = new RoleDaoImpl();
@@ -107,6 +125,11 @@ public class UserView extends javax.swing.JFrame {
                 "ID", "Full Name", "Username", "Pass", "Mobile", "Rolename"
             }
         ));
+        tblDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDisplayMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDisplay);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -122,6 +145,11 @@ public class UserView extends javax.swing.JFrame {
         });
 
         jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Clear");
 
@@ -234,8 +262,27 @@ public class UserView extends javax.swing.JFrame {
         User user = new User(txtFullname.getText(), txtUsername.getText(), txtPassword.getText(), txtMobile.getText(), role);
         UserDao obj = new UserDaoImpl();
         obj.save(user);
+        displayRoleListIntoTable();
         JOptionPane.showMessageDialog(null, "Success");
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void tblDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisplayMouseClicked
+        // getSelectedRowData();
+        int i = tblDisplay.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
+        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
+        userId = Integer.parseInt(model.getValueAt(i, 0).toString());
+        txtFullname.setText(model.getValueAt(i, 1).toString());
+        txtUsername.setText(model.getValueAt(i, 2).toString());
+
+        txtPassword.setText(model.getValueAt(i, 3).toString());
+        txtMobile.setText(model.getValueAt(i, 4).toString());
+
+    }//GEN-LAST:event_tblDisplayMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void displayRoles() {
 
