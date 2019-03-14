@@ -31,29 +31,12 @@ public class UserView extends javax.swing.JFrame {
     }
     private static int userId;
 
-    public void getSelectedRowData() {
-        int i = tblDisplay.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
-        userId = Integer.parseInt(model.getValueAt(i, 0).toString());
-        txtFullname.setText(model.getValueAt(i, 1).toString());
-        txtUsername.setText(model.getValueAt(i, 2).toString());
-        txtPassword.setText(model.getValueAt(i, 3).toString());
-        txtMobile.setText(model.getValueAt(i, 4).toString());
-        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
-
-//        if (model.getValueAt(i, 5).toString().trim().equalsIgnoreCase("admin")) {
-//            cmbRole.setSelectedIndex(1);
-//        } if (model.getValueAt(i, 5).toString().trim().equalsIgnoreCase("user")) {
-//            cmbRole.setSelectedIndex(2);
-//        }
-    }
-
     public void displayRoleAtComboBox() {
         RoleDao dao = new RoleDaoImpl();
         List<Role> roles = dao.getRoles();
         cmbRole.addItem("Select A Role");
         for (Role role : roles) {
-            cmbRole.addItem(role.getId() + "  " + role.getRoleName());
+            cmbRole.addItem(role.getRoleName());
         }
     }
 
@@ -256,9 +239,11 @@ public class UserView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        RoleDao roleDao = new RoleDaoImpl();
+
         String selectRole = cmbRole.getItemAt(cmbRole.getSelectedIndex());
-        int id = Integer.parseInt(selectRole.substring(0, 2).trim());
-        Role role = new Role(id);
+        // int id = Integer.parseInt(selectRole.substring(0, 2).trim());
+        Role role = roleDao.getRoleByRoleName(selectRole);
         User user = new User(txtFullname.getText(), txtUsername.getText(), txtPassword.getText(), txtMobile.getText(), role);
         UserDao obj = new UserDaoImpl();
         obj.save(user);
@@ -270,18 +255,28 @@ public class UserView extends javax.swing.JFrame {
         // getSelectedRowData();
         int i = tblDisplay.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
-        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
+
         userId = Integer.parseInt(model.getValueAt(i, 0).toString());
         txtFullname.setText(model.getValueAt(i, 1).toString());
         txtUsername.setText(model.getValueAt(i, 2).toString());
 
         txtPassword.setText(model.getValueAt(i, 3).toString());
         txtMobile.setText(model.getValueAt(i, 4).toString());
+        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
 
     }//GEN-LAST:event_tblDisplayMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        RoleDao roleDao = new RoleDaoImpl();
+
+        String selectRole = cmbRole.getItemAt(cmbRole.getSelectedIndex());
+        Role role = roleDao.getRoleByRoleName(selectRole);
+        User user = new User(userId, txtFullname.getText(), txtUsername.getText(), txtPassword.getText(), txtMobile.getText(), role);
+        UserDao obj = new UserDaoImpl();
+        obj.update(user);
+        displayRoleListIntoTable();
+        JOptionPane.showMessageDialog(null, "Success");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void displayRoles() {

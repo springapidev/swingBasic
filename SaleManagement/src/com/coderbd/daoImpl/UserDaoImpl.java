@@ -53,7 +53,20 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "update user set full_name=?, user_name=?, password=?, mobile_no=?, role_id=? where id=?";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, user.getFullName());
+            pstm.setString(2, user.getUserName());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, user.getMobile());
+            pstm.setInt(5, user.getRole().getId());
+            pstm.setInt(6, user.getId());
+            pstm.executeUpdate();
+            System.out.println("Update success!");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
