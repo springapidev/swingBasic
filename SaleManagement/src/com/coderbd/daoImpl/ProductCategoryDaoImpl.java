@@ -49,7 +49,21 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
 
     @Override
     public ProductCategory getProductCategoryById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProductCategory pc = new ProductCategory();
+        String sql = "select * from product_category where id=?";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                pc.setId(rs.getInt(1));
+                pc.setCatName(rs.getString(2));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductCategoryDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pc;
     }
 
     @Override
