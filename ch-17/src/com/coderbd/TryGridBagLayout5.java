@@ -43,7 +43,7 @@ public class TryGridBagLayout5 {
 
     // Set constraints and add third button 
     constraints.gridx = 0;                           // Begin new row
-    constraints.fill = constraints.NONE;
+    constraints.fill = constraints.BOTH;
     constraints.ipadx = 30;                          // Pad component in x
     constraints.ipady = 10;                          // Pad component in y
     constraints.insets = new java.awt.Insets(0,0,0,0);       // No insets

@@ -34,7 +34,11 @@ public class TryGridBagLayout {
 
         // Set constraints and add second button 
         constraints.gridwidth = constraints.REMAINDER;    // Rest of the row
-        addButton("GO", constraints, gridbag);            // Create and add button
+        addButton("GO", constraints, gridbag);  
+        
+ // Set constraints and add second button 
+        constraints.gridwidth = constraints.REMAINDER;    // Rest of the row
+        addButton("GOO", constraints, gridbag);  // Create and add button
         aWindow.setVisible(true);                         // Display the window
     }
 

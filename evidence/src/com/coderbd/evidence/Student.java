@@ -1,8 +1,5 @@
 package com.coderbd.evidence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Rajaul Islam

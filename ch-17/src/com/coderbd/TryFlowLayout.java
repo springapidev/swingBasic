@@ -22,14 +22,14 @@ public class TryFlowLayout {
     FlowLayout flow = new FlowLayout();            // Create a layout manager
     flow.setVgap(25);
     flow.setHgap(25);
-    flow.setAlignment(2);
+    flow.setAlignment(0);
     Container content = aWindow.getContentPane();  // Get the content pane
     content.setLayout(flow);                       // Set the container layout mgr
 
     // Now add six button components
-    for(int i = 1; i <= 26; i++)
-      content.add(new JButton("Press " + i));      // Add a Button to content pane
+    for(int i = 1; i <= 10; i++)
+      content.add(new JButton("BD " + i));      // Add a Button to content pane
 
-    aWindow.setVisible(true);                      // Display the window
+      aWindow.setVisible(true);                      // Display the window
   }
 }
