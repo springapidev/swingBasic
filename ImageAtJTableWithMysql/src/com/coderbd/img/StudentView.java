@@ -36,7 +36,7 @@ public class StudentView extends javax.swing.JFrame {
 
     public void displayTable() {
 //      lblPhoto.setIcon(new javax.swing.ImageIcon("C:\\Users\\rajaul\\Desktop\\screenCapture\\images\\bulk_en.jpg")); 
-        File sour = new File("C:\\Users\\rajaul\\Desktop\\screenCapture\\images\\bulk_en.jpg");
+        File sour = new File("images\\rajaul.jpg");
         try {
             BufferedImage img = ImageIO.read(sour);
             Image newImg = img.getScaledInstance(100, 120, Image.SCALE_SMOOTH);
@@ -66,8 +66,9 @@ public class StudentView extends javax.swing.JFrame {
             }
 
             tblDisplay.setModel(model);
-
-            lblProfilePhoto.setIcon(new ImageIcon(list.get(2).getPhoto()));
+            if (list.size() > 0) {
+                lblProfilePhoto.setIcon(new ImageIcon(list.get(2).getPhoto()));
+            }
         } catch (IOException ex) {
             Logger.getLogger(StudentView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -177,7 +178,7 @@ public class StudentView extends javax.swing.JFrame {
 
     String source = "";
     String filename = "";
-    String destination = "C:\\Users\\rajaul\\Desktop\\screenCapture\\images";
+    String destination = "images";
     private void btnhooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhooseFileActionPerformed
         try {
             StudentDao dao = new StudentDaoImpl();

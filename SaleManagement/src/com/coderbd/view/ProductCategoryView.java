@@ -156,7 +156,7 @@ public class ProductCategoryView extends javax.swing.JFrame {
         String catName = txtCatName.getText().trim();
 
         if (catName.length() < 3) {
-            JOptionPane.showMessageDialog(null, "Enter At least 4 Characters");
+            JOptionPane.showMessageDialog(null, "Enter At least 3 Characters");
         } else {
             try {
                 ProductCategory existCat = obj.getProductCategoryBycategoryName(catName);

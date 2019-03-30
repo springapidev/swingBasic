@@ -3,7 +3,6 @@ package com.coderbd.daoImpl;
 import com.coderbd.conn.CustomDBConnection;
 import com.coderbd.dao.ProductSalesDao;
 import com.coderbd.pojo.Product;
-import com.coderbd.pojo.ProductCategory;
 import com.coderbd.pojo.ProductSales;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

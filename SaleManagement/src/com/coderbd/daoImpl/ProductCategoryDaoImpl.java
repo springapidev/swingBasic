@@ -3,7 +3,6 @@ package com.coderbd.daoImpl;
 import com.coderbd.conn.CustomDBConnection;
 import com.coderbd.dao.ProductCategoryDao;
 import com.coderbd.pojo.ProductCategory;
-import com.coderbd.pojo.Role;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,7 +95,7 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
         String sql = "select * from product_category";
         try {
 
-            PreparedStatement ps = CustomDBConnection.getDBConnection().prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ProductCategory pc = new ProductCategory(rs.getInt(1), rs.getString(2));
